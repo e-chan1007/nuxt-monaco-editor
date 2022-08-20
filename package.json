@@ -1,0 +1,37 @@
+{
+  "name": "@e-chan1007/nuxt3-monaco-editor",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.0.0-rc.8"
+  },
+  "devDependencies": {
+    "@e-chan1007/eslint-config-vue": "^1.0.7",
+    "@nuxt/module-builder": "latest",
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "eslint": "latest",
+    "nuxt": "^3.0.0-rc.8"
+  },
+  "peerDependencies": {
+    "monaco-editor": "^0.34.0"
+  },
+  "packageManager": "yarn@3.2.2"
+}
