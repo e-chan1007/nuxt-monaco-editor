@@ -5689,6 +5689,7 @@ eslint@latest:
     monaco-editor: ^0.34.0
     nuxt: ^3.0.0-rc.8
     sass: ^1.54.5
+    vite-plugin-static-copy: ^0.7.0
   peerDependencies:
     monaco-editor: "*"
   languageName: unknown
@@ -8054,6 +8055,20 @@ eslint@latest:
   bin:
     vite-plugin-checker-vls: bin/vls
   checksum: b3bff686c3a48335869376d01ceb98ec4a5fa961dcdb4968ab2e629ab989a7760f2ea29c3660cf3fa54f3354968c93415fc918f2bebea2ec8a6bb93692eec41a
+  languageName: node
+  linkType: hard
+
+"vite-plugin-static-copy@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "vite-plugin-static-copy@npm:0.7.0"
+  dependencies:
+    chokidar: ^3.5.3
+    fast-glob: ^3.2.11
+    fs-extra: ^10.1.0
+    picocolors: ^1.0.0
+  peerDependencies:
+    vite: ^3.0.0
+  checksum: ffedb76c9ede1a8bc9883adc750b78396a18d60bb01c9d21b3f132c319582a34c4036470e4499e00cdcdfeb0bac8dce1073969a4f2a4c2d9424a7473eeda6b9a
   languageName: node
   linkType: hard
 

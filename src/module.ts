@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addComponent, addAutoImport, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addComponent, addAutoImport, addPlugin, createResolver, addVitePlugin } from '@nuxt/kit'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export type MonacoEditorLocale = 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw' | 'en';
 
@@ -32,6 +33,15 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push('monaco-editor')
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale
+
+    const [viteStaticCopyServePlugin, viteStaticCopyBuildPlugin] = viteStaticCopy({
+      targets: [{
+        src: '../node_modules/monaco-editor/min/*',
+        dest: '_monaco'
+      }]
+    })
+    addVitePlugin(viteStaticCopyServePlugin)
+    addVitePlugin(viteStaticCopyBuildPlugin)
 
     addPlugin(resolve('plugin.client'))
     addComponent({ name: options.componentName.codeEditor, filePath: resolve('MonacoEditor.vue') })

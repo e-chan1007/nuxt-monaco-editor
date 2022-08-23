@@ -1,6 +1,4 @@
 import { defineNuxtPlugin, useRuntimeConfig } from '#app'
-import type * as Monaco from 'monaco-editor'
-import monacoLoader from 'monaco-editor/min/vs/loader?url'
 import { _useMonacoState } from './composables'
 
 declare let require: any
@@ -10,9 +8,9 @@ export default defineNuxtPlugin(_nuxtApp => new Promise<void>((resolve) => {
   const locale = useRuntimeConfig().app.__MONACO_EDITOR_LOCALE__
 
   const script = document.createElement('script')
-  script.src = monacoLoader
+  script.src = '/_monaco/vs/loader.js'
   script.onload = () => {
-    require.config({ paths: { vs: monacoLoader.replace(/\/loader.js$/, '') } })
+    require.config({ paths: { vs: '_monaco/vs' } })
     if (locale !== 'en') {
       require.config({
         'vs/nls': {
@@ -22,7 +20,7 @@ export default defineNuxtPlugin(_nuxtApp => new Promise<void>((resolve) => {
         }
       })
     }
-    require(['vs/editor/editor.main'], (monaco: typeof Monaco) => {
+    require(['vs/editor/editor.main'], (monaco) => {
       monacoState.value = monaco
       resolve()
     })
