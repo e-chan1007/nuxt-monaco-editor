@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addComponent, addAutoImport, addPlugin, createResolver, addPluginTemplate } from '@nuxt/kit'
+import { defineNuxtModule, addComponent, addAutoImport, addPlugin, createResolver } from '@nuxt/kit'
 
 export type MonacoEditorLocale = 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw' | 'en';
 
