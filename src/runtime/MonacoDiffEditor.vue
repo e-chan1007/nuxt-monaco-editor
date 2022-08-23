@@ -6,6 +6,8 @@
 
 <script lang="ts" setup>
 import type * as Monaco from 'monaco-editor'
+import { onMounted, ref, watch } from 'vue'
+import { useMonaco } from './composables'
 
 interface Props {
   /**
@@ -38,9 +40,9 @@ const editorElement = ref<HTMLDivElement>()
 const monaco = useMonaco()
 
 let ignoreWatch = false
-let editor: Monaco.editor.IStandaloneDiffEditor = null
-let originalModel: Monaco.editor.ITextModel = null
-let modifiedModel: Monaco.editor.ITextModel = null
+let editor: Monaco.editor.IStandaloneDiffEditor
+let originalModel: Monaco.editor.ITextModel
+let modifiedModel: Monaco.editor.ITextModel
 
 watch(() => [props.original, props.modelValue], () => {
   if (ignoreWatch) {
@@ -70,6 +72,7 @@ defineExpose({
   /**
    * Monaco editor instance
    */
+  // @ts-ignore
   $editor: editor
 })
 
@@ -81,10 +84,12 @@ onMounted(() => {
     original: originalModel,
     modified: modifiedModel
   })
+
   editor.onDidUpdateDiff(() => {
     ignoreWatch = true
-    emit('update:modelValue', editor.getModel().modified.getValue())
+    emit('update:modelValue', editor.getModel()!.modified.getValue())
   })
+
   isLoading.value = false
 })
 </script>

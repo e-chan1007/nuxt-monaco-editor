@@ -5,7 +5,10 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from '@vue/reactivity'
 import type * as Monaco from 'monaco-editor'
+import { onMounted, ref, watch } from 'vue'
+import { useMonaco } from './composables'
 
 interface Props {
   /**
@@ -25,21 +28,21 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  lang: () => null,
+  lang: () => 'plaintext',
   options: () => ({}),
   modelValue: () => ''
 })
 const emit = defineEmits<Emits>()
 const isLoading = ref(true)
 
-const lang = computed(() => props.lang || props.options.language || 'plaintext')
+const lang = computed(() => props.lang || props.options.language)
 
 const editorElement = ref<HTMLDivElement>()
 const monaco = useMonaco()
 
 let ignoreWatch = false
-let editor: Monaco.editor.IStandaloneCodeEditor = null
-let model: Monaco.editor.ITextModel = null
+let editor: Monaco.editor.IStandaloneCodeEditor
+let model: Monaco.editor.ITextModel
 
 watch(() => props.modelValue, () => {
   if (ignoreWatch) {
@@ -63,6 +66,7 @@ defineExpose({
   /**
    * Monaco editor instance
    */
+  // @ts-ignore
   $editor: editor
 })
 
@@ -76,7 +80,6 @@ onMounted(() => {
     emit('update:modelValue', editor.getValue())
   })
 
-  console.log('resolved')
   isLoading.value = false
 })
 </script>

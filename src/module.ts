@@ -33,7 +33,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push('monaco-editor')
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale
 
-    addPlugin(resolve('plugin.client.ts'))
+    addPlugin(resolve('plugin.client'))
     addComponent({ name: options.componentName.codeEditor, filePath: resolve('MonacoEditor.vue') })
     addComponent({ name: options.componentName.diffEditor, filePath: resolve('MonacoDiffEditor.vue') })
     addAutoImport({ name: 'useMonaco', as: 'useMonaco', from: resolve('composables') })
