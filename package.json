@@ -22,6 +22,8 @@
   "scripts": {
     "prepack": "nuxt-module-build",
     "build": "nuxt-module-build",
+    "postinstall": "husky install",
+    "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue .",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
@@ -33,9 +35,12 @@
     "@nuxt/kit": "^3.0.0-rc.8"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
+    "husky": "^8.0.0",
     "monaco-editor": "^0.34.0",
     "nuxt": "^3.0.0-rc.8",
     "sass": "^1.54.5",
