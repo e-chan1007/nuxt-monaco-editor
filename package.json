@@ -20,10 +20,11 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
-    "build": "nuxt-module-build",
     "postinstall": "husky install",
+    "build": "nuxt-module-build",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue .",
+    "prepack": "nuxt-module-build",
+    "release": "standard-version",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
@@ -44,6 +45,7 @@
     "monaco-editor": "^0.34.0",
     "nuxt": "^3.0.0-rc.8",
     "sass": "^1.54.5",
+    "standard-version": "^9.5.0",
     "vite-plugin-static-copy": "^0.7.0"
   },
   "peerDependencies": {
