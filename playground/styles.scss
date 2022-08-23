@@ -1,0 +1,32 @@
+html,
+body,
+#__nuxt {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 960px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 {
+  line-height: 1em;
+  font-size: 24px;
+}
+
+h2 {
+  line-height: 1em;
+  font-size: 20px;
+}
+
+.editor {
+  width: 100%;
+  height: 150px;
+}

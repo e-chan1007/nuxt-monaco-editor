@@ -366,49 +366,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@e-chan1007/eslint-config-base@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@e-chan1007/eslint-config-base@npm:1.0.4"
-  dependencies:
-    "@rushstack/eslint-patch": ^1.1.3
-    "@typescript-eslint/eslint-plugin": ^5.26.0
-    "@typescript-eslint/parser": ^5.26.0
-  peerDependencies:
-    eslint: ^8.0.0
-    typescript: ^4.0.0
-  checksum: 9fcca1defab035a17ca6dbbdc2717224dcb67aa71f2a5a5a45744821b7841d9ac31fe39fb2be8edcb5a62dd94a2944f319ab2b82df07b43e9efea15b7c75b251
-  languageName: node
-  linkType: hard
-
-"@e-chan1007/eslint-config-vue@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@e-chan1007/eslint-config-vue@npm:1.0.7"
-  dependencies:
-    "@e-chan1007/eslint-config-base": ^1.0.4
-    "@vue/eslint-config-typescript": ^10.0.0
-    eslint-plugin-vue: ^9.0.1
-  peerDependencies:
-    eslint: ^8.0.0
-    typescript: ^4.0.0
-  checksum: 0cd9c796464711864b54c383afe9d7ec9f5e52dbfb11921f788d05cf5ee7a3525d7cc8dcae8793734f6756b350afc829b14b14060faaf08efbf98b433cc4d35b
-  languageName: node
-  linkType: hard
-
-"@e-chan1007/nuxt3-monaco-editor@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@e-chan1007/nuxt3-monaco-editor@workspace:."
-  dependencies:
-    "@e-chan1007/eslint-config-vue": ^1.0.7
-    "@nuxt/kit": ^3.0.0-rc.8
-    "@nuxt/module-builder": latest
-    "@nuxtjs/eslint-config-typescript": latest
-    eslint: latest
-    nuxt: ^3.0.0-rc.8
-  peerDependencies:
-    monaco-editor: ^0.34.0
-  languageName: unknown
-  linkType: soft
-
 "@esbuild/linux-loong64@npm:0.14.54":
   version: 0.14.54
   resolution: "@esbuild/linux-loong64@npm:0.14.54"
@@ -962,13 +919,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:^1.1.3":
-  version: 1.1.4
-  resolution: "@rushstack/eslint-patch@npm:1.1.4"
-  checksum: 597bc84e2f76c7f5f2bcedd4c4b1dd5d02524167a0f67ac588e8fbbd94666297aaf0e6a53ec46afb95554164fc1169ff782841003280e4bc98e80ab6559412c6
-  languageName: node
-  linkType: hard
-
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -1052,7 +1002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.0.0, @typescript-eslint/eslint-plugin@npm:^5.21.0, @typescript-eslint/eslint-plugin@npm:^5.26.0":
+"@typescript-eslint/eslint-plugin@npm:^5.21.0":
   version: 5.33.1
   resolution: "@typescript-eslint/eslint-plugin@npm:5.33.1"
   dependencies:
@@ -1075,7 +1025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.0.0, @typescript-eslint/parser@npm:^5.21.0, @typescript-eslint/parser@npm:^5.26.0":
+"@typescript-eslint/parser@npm:^5.21.0":
   version: 5.33.1
   resolution: "@typescript-eslint/parser@npm:5.33.1"
   dependencies:
@@ -1293,20 +1243,6 @@ __metadata:
   version: 6.2.1
   resolution: "@vue/devtools-api@npm:6.2.1"
   checksum: 34765af0be9b0cc7e3def73b2792b1514e3c348852c5a7503fe07d013f0e907af6c27c0a32c0637dd748caf37c075af8e53ca3220433e0bd34b6f3405f358272
-  languageName: node
-  linkType: hard
-
-"@vue/eslint-config-typescript@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@vue/eslint-config-typescript@npm:10.0.0"
-  dependencies:
-    "@typescript-eslint/eslint-plugin": ^5.0.0
-    "@typescript-eslint/parser": ^5.0.0
-    vue-eslint-parser: ^8.0.0
-  peerDependencies:
-    eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
-    eslint-plugin-vue: ^8.0.1
-  checksum: 8af585db57ea4cd24a00e0ef21db077d911237f8db76c4147a98ba0b975f2b5ebc85d5ce7b9abb0e8a9a32cd2ad5030e62b3d1ddeb9ac47a740a8bc4eae46f97
   languageName: node
   linkType: hard
 
@@ -1923,7 +1859,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.5.1, chokidar@npm:^3.5.3":
+"chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.5.1, chokidar@npm:^3.5.3":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
   dependencies:
@@ -3404,23 +3340,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:^9.0.1":
-  version: 9.3.0
-  resolution: "eslint-plugin-vue@npm:9.3.0"
-  dependencies:
-    eslint-utils: ^3.0.0
-    natural-compare: ^1.4.0
-    nth-check: ^2.0.1
-    postcss-selector-parser: ^6.0.9
-    semver: ^7.3.5
-    vue-eslint-parser: ^9.0.1
-    xml-name-validator: ^4.0.0
-  peerDependencies:
-    eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
-  checksum: 3a1819749fb9a617f3647a58ee21595e811a9bcbf2a5eb1c2105da24c41c7b91a58e4473d751d6ab78cc0bb140dc7e11aac09337fc2c7d44401564a11ec92100
-  languageName: node
-  linkType: hard
-
 "eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -3531,7 +3450,7 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"espree@npm:^9.0.0, espree@npm:^9.3.1, espree@npm:^9.3.2, espree@npm:^9.3.3":
+"espree@npm:^9.0.0, espree@npm:^9.3.2, espree@npm:^9.3.3":
   version: 9.3.3
   resolution: "espree@npm:9.3.3"
   dependencies:
@@ -4369,6 +4288,13 @@ eslint@latest:
   version: 5.2.0
   resolution: "ignore@npm:5.2.0"
   checksum: 6b1f926792d614f64c6c83da3a1f9c83f6196c2839aa41e1e32dd7b8d174cef2e329d75caabb62cb61ce9dc432f75e67d07d122a037312db7caa73166a1bdb77
+  languageName: node
+  linkType: hard
+
+"immutable@npm:^4.0.0":
+  version: 4.1.0
+  resolution: "immutable@npm:4.1.0"
+  checksum: b9bc1f14fb18eb382d48339c064b24a1f97ae4cf43102e0906c0a6e186a27afcd18b55ca4a0b63c98eefb58143e2b5ebc7755a5fb4da4a7ad84b7a6096ac5b13
   languageName: node
   linkType: hard
 
@@ -5425,6 +5351,13 @@ eslint@latest:
   languageName: node
   linkType: hard
 
+"monaco-editor@npm:^0.34.0":
+  version: 0.34.0
+  resolution: "monaco-editor@npm:0.34.0"
+  checksum: 10a28c1fe07268a23106ec9b743339af603e00c3ce646de72bf74f77e3d44065536f1a11f1a86ed459dfd9cb891261e6c7974377fc511eb65f354d6ddc89275b
+  languageName: node
+  linkType: hard
+
 "mri@npm:^1.2.0":
   version: 1.2.0
   resolution: "mri@npm:1.2.0"
@@ -5744,6 +5677,22 @@ eslint@latest:
   checksum: c0a28cfcfbd7cba1336cf4b1fc75c88fb3b55156d631af45fb15017448057dd85a556b771ae744ed26039bc640516ed2fd4bd1a3fb90da35081d2ee3870ac823
   languageName: node
   linkType: hard
+
+"nuxt-monaco-editor@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "nuxt-monaco-editor@workspace:."
+  dependencies:
+    "@nuxt/kit": ^3.0.0-rc.8
+    "@nuxt/module-builder": latest
+    "@nuxtjs/eslint-config-typescript": latest
+    eslint: latest
+    monaco-editor: ^0.34.0
+    nuxt: ^3.0.0-rc.8
+    sass: ^1.54.5
+  peerDependencies:
+    monaco-editor: "*"
+  languageName: unknown
+  linkType: soft
 
 "nuxt@npm:^3.0.0-rc.8":
   version: 3.0.0-rc.8
@@ -6987,6 +6936,19 @@ eslint@latest:
   languageName: node
   linkType: hard
 
+"sass@npm:^1.54.5":
+  version: 1.54.5
+  resolution: "sass@npm:1.54.5"
+  dependencies:
+    chokidar: ">=3.0.0 <4.0.0"
+    immutable: ^4.0.0
+    source-map-js: ">=0.6.2 <2.0.0"
+  bin:
+    sass: sass.js
+  checksum: ba7a65aa7508419468547c8de4d59e537bec874f52823f501663dc98d80dfd2d374e8ea73a31200db7f510b8816c925edf89728c9b36889f4e6673d3e94ec100
+  languageName: node
+  linkType: hard
+
 "scule@npm:^0.2.1":
   version: 0.2.1
   resolution: "scule@npm:0.2.1"
@@ -7028,7 +6990,7 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.0.0, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.6, semver@npm:^7.3.7":
+"semver@npm:^7.0.0, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7":
   version: 7.3.7
   resolution: "semver@npm:7.3.7"
   dependencies:
@@ -7180,7 +7142,7 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"source-map-js@npm:^1.0.2":
+"source-map-js@npm:>=0.6.2 <2.0.0, source-map-js@npm:^1.0.2":
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: c049a7fc4deb9a7e9b481ae3d424cc793cb4845daa690bc5a05d428bf41bf231ced49b4cf0c9e77f9d42fdb3d20d6187619fc586605f5eabe995a316da8d377c
@@ -8196,7 +8158,7 @@ eslint@latest:
   languageName: node
   linkType: hard
 
-"vue-eslint-parser@npm:^8.0.0, vue-eslint-parser@npm:^8.0.1":
+"vue-eslint-parser@npm:^8.0.1":
   version: 8.3.0
   resolution: "vue-eslint-parser@npm:8.3.0"
   dependencies:
@@ -8210,23 +8172,6 @@ eslint@latest:
   peerDependencies:
     eslint: ">=6.0.0"
   checksum: 8cc751e9fc2bfba93664ad8945732ab1c97791f9123e703de8669b65670d1e01906d80436bf4932d7ee6fa6174ed4545e8abb059206c88f4bd71957ca6cf7ba8
-  languageName: node
-  linkType: hard
-
-"vue-eslint-parser@npm:^9.0.1":
-  version: 9.0.3
-  resolution: "vue-eslint-parser@npm:9.0.3"
-  dependencies:
-    debug: ^4.3.4
-    eslint-scope: ^7.1.1
-    eslint-visitor-keys: ^3.3.0
-    espree: ^9.3.1
-    esquery: ^1.4.0
-    lodash: ^4.17.21
-    semver: ^7.3.6
-  peerDependencies:
-    eslint: ">=6.0.0"
-  checksum: 61248eb504b8d0cbc95ed3f7ec6b11b72782cd76e4049798626f9c09031d620691a967231985c79d8ece8b04864797e465b7f47bcf91828e18344ae3691d9066
   languageName: node
   linkType: hard
 
@@ -8382,13 +8327,6 @@ eslint@latest:
     utf-8-validate:
       optional: true
   checksum: 2152cf862cae0693f3775bc688a6afb2e989d19d626d215e70f5fcd8eb55b1c3b0d3a6a4052905ec320e2d7734e20aeedbf9744496d62f15a26ad79cf4cf7dae
-  languageName: node
-  linkType: hard
-
-"xml-name-validator@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "xml-name-validator@npm:4.0.0"
-  checksum: af100b79c29804f05fa35aa3683e29a321db9b9685d5e5febda3fa1e40f13f85abc40f45a6b2bf7bee33f68a1dc5e8eaef4cec100a304a9db565e6061d4cb5ad
   languageName: node
   linkType: hard
 

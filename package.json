@@ -1,6 +1,11 @@
 {
-  "name": "@e-chan1007/nuxt3-monaco-editor",
-  "version": "1.0.0",
+  "name": "nuxt-monaco-editor",
+  "author": "e-chan1007",
+  "repository": {
+    "type": "git",
+    "url": "e_chan1007 <echan041007@gmail.com> (https://e-chan.me)"
+  },
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -16,22 +21,27 @@
   ],
   "scripts": {
     "prepack": "nuxt-module-build",
+    "build": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "website:dev": "nuxi dev website",
+    "website:generate": "nuxi generate website",
+    "website:prepare": "nuxt-module-build --stub && nuxi prepare website"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.8"
   },
   "devDependencies": {
-    "@e-chan1007/eslint-config-vue": "^1.0.7",
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
-    "nuxt": "^3.0.0-rc.8"
+    "monaco-editor": "^0.34.0",
+    "nuxt": "^3.0.0-rc.8",
+    "sass": "^1.54.5"
   },
   "peerDependencies": {
-    "monaco-editor": "^0.34.0"
+    "monaco-editor": "*"
   },
   "packageManager": "yarn@3.2.2"
 }

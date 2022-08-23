@@ -1,4 +1,3 @@
 {
-  "private": true,
-  "name": "@e-chan1007/nuxt3-monaco-editor-playground"
+  "name": "nuxt-monaco-editor-playground"
 }
