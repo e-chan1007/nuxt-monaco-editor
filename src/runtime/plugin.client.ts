@@ -1,4 +1,4 @@
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin, useRuntimeConfig } from '#app'
 import type * as Monaco from 'monaco-editor'
 import monacoLoader from 'monaco-editor/min/vs/loader?url'
 import { _useMonacoState } from './composables'
