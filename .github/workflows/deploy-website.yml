@@ -35,23 +35,22 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            website/dist
-            website/.nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('website/dist') }}
+            docs/.vuepress/dist
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('docs/.vuepress/dist') }}
           restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+            ${{ runner.os }}-vuepress-build-
       - name: Install dependencies
         run: yarn install
       - name: Prepare static HTML export with Nuxt
-        run: yarn website:prepare
+        run: yarn dev:prepare
       - name: Static HTML export with Nuxt
+        run: yarn docs:build
         env:
-          NUXT_APP_BASE_URL: /nuxt-monaco-editor/
-        run: yarn website:generate
+          BASE_URL: /nuxt-monaco-editor/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./website/dist
+          path: ./docs/.vuepress/dist
 
   deploy:
     environment:

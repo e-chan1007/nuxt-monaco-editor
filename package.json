@@ -6,8 +6,8 @@
     "url": "e_chan1007 <echan041007@gmail.com> (https://e-chan.me)"
   },
   "version": "1.0.0-alpha.11",
-  "license": "MIT",
   "type": "module",
+  "license": "MIT",
   "exports": {
     ".": {
       "import": "./dist/module.mjs",
@@ -29,9 +29,9 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "website:dev": "nuxi dev website",
-    "website:generate": "nuxi generate website",
-    "website:prepare": "nuxt-module-build --stub && nuxi prepare website"
+    "docs:dev": "vuepress dev docs --port 3000",
+    "docs:build": "vuepress build docs",
+    "docs:serve": "vuepress serve docs --port 3000"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.8",
@@ -47,8 +47,9 @@
     "monaco-editor": "^0.34.0",
     "nuxt": "^3.0.0-rc.8",
     "pinst": "^3.0.0",
-    "sass": "^1.54.5",
-    "standard-version": "^9.5.0"
+    "standard-version": "^9.5.0",
+    "vitepress": "^1.0.0-alpha.10",
+    "vuepress": "next"
   },
   "peerDependencies": {
     "monaco-editor": "*"

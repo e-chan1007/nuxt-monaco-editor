@@ -38,7 +38,7 @@ const isLoading = ref(true)
 const lang = computed(() => props.lang || props.options.language)
 
 const editorElement = ref<HTMLDivElement>()
-const monaco = useMonaco()
+const monaco = useMonaco()!
 
 let ignoreWatch = false
 let editor: Monaco.editor.IStandaloneCodeEditor
@@ -71,7 +71,7 @@ defineExpose({
 })
 
 onMounted(() => {
-  editor = monaco.editor.create(editorElement.value, props.options)
+  editor = monaco.editor.create(editorElement.value!, props.options)
   model = monaco.editor.createModel(props.modelValue, lang.value)
   editor.setModel(model)
 

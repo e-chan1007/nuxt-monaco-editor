@@ -16,7 +16,7 @@ interface Props {
   */
   lang?: string;
   /**
-   * Options passed to the second argument of `monaco.editor.create`
+   * Options passed to the second argument of `monaco.editor.createDiffEditor`
    */
   options?: Monaco.editor.IStandaloneDiffEditorConstructionOptions
   original?: string;
@@ -37,7 +37,7 @@ const emit = defineEmits<Emits>()
 const isLoading = ref(true)
 
 const editorElement = ref<HTMLDivElement>()
-const monaco = useMonaco()
+const monaco = useMonaco()!
 
 let ignoreWatch = false
 let editor: Monaco.editor.IStandaloneDiffEditor
@@ -77,7 +77,7 @@ defineExpose({
 })
 
 onMounted(() => {
-  editor = monaco.editor.createDiffEditor(editorElement.value, props.options)
+  editor = monaco.editor.createDiffEditor(editorElement.value!, props.options)
   originalModel = monaco.editor.createModel(props.original, props.lang)
   modifiedModel = monaco.editor.createModel(props.modelValue, props.lang)
   editor.setModel({
