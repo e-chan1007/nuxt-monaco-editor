@@ -5,16 +5,16 @@ heroText: Nuxt Monaco-Editor
 tagline: The easist way to get along with Monaco Editor.
 
 actions:
-  - text: Get Started
-    link: /guide/getting-started
+- text: Get Started
+  link: /guide/getting-started
       
 features:
-  - title: Zero Configuration
-    details: All you have to do is to import the module in Nuxt Config.
-  - title: Localization
-    details: Including Localization support, just switch on your config.
-  - title: Nuxt3 Ready
-    details: Built on Vue 3, can use Auto-imports and Composables very easily.
+- title: Zero Configuration
+  details: All you have to do is to import the module in Nuxt Config.
+- title: Localization
+  details: Including Localization support, just switch on your config.
+- title: Nuxt3 Ready
+  details: Built on Vue 3, can use very easily by Auto-imports and Composables.
 ---
 
 ## Setup

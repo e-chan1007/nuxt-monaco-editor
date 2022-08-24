@@ -23,7 +23,7 @@
     "postpack": "pinst --enable",
     "_postinstall": "husky install",
     "build": "nuxt-module-build",
-    "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue .",
+    "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue . && remark . -q",
     "prepack": "pinst --disable && nuxt-module-build",
     "release": "standard-version",
     "dev": "nuxi dev playground",
@@ -47,12 +47,24 @@
     "monaco-editor": "^0.34.0",
     "nuxt": "^3.0.0-rc.8",
     "pinst": "^3.0.0",
+    "remark-cli": "^11.0.0",
+    "remark-lint": "^9.1.1",
+    "remark-preset-lint-recommended": "^6.1.2",
     "standard-version": "^9.5.0",
     "vitepress": "^1.0.0-alpha.10",
     "vuepress": "next"
   },
   "peerDependencies": {
     "monaco-editor": "*"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended",
+      [
+        "remark-lint-list-item-indent",
+        "mixed"
+      ]
+    ]
   },
   "packageManager": "yarn@3.2.2"
 }
