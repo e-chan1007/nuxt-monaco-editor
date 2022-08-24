@@ -27,4 +27,4 @@ Available locales are `de`, `en`, `es` , `fr`, `it`, `ja`, `ko`, `ru`, `zh-cn`, 
 
 Change component name as you want.
 
-`codeEditor` for [`<MonacoEditor>`](../references/monaco-editor), `diffEditor` for [`<MonacoDiffEditor>`](../references/monaco-diff-editor), 
+`codeEditor` for [`<MonacoEditor>`](../references/monaco-editor), `diffEditor` for [`<MonacoDiffEditor>`](../references/monaco-diff-editor).

@@ -52,16 +52,16 @@ You can access to the editor instanc by using `ref` and `$editor`.
 </template>
 
 <script lang="ts" setup>
-import { MonacoEditor } from "#build/components";
-const editorRef = ref<InstanceType<typeof MonacoEditor>>();
+import { MonacoEditor } from '#build/components'
+const editorRef = ref<InstanceType<typeof MonacoEditor>>()
 
 // For example, add greeting action to editor...
 editorRef.value?.$editor.addAction({
-  id: "hello-world",
-  label: "Hello world",
+  id: 'hello-world',
+  label: 'Hello world',
   run: function (ed) {
-    alert("Hello world!");
+    alert('Hello world!')
   }
-});
+})
 </script>
 ```

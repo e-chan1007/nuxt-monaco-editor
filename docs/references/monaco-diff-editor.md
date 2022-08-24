@@ -52,20 +52,20 @@ Available options are listed [here](https://microsoft.github.io/monaco-editor/ap
 You can access to the editor instanc by using `ref` and `$editor`.
 ```vue
 <template>
-  <MonacoEditor ref="editorRef" />
+  <MonacoDiffEditor ref="editorRef" />
 </template>
 
 <script lang="ts" setup>
-import { MonacoDiffEditor } from "#build/components";
-const editorRef = ref<InstanceType<typeof MonacoDiffEditor>>();
+import { MonacoEditor } from '#build/components'
+const editorRef = ref<InstanceType<typeof MonacoDiffEditor>>()
 
 // For example, add greeting action to editor...
 editorRef.value?.$editor.addAction({
-  id: "hello-world",
-  label: "Hello world",
+  id: 'hello-world',
+  label: 'Hello world',
   run: function (ed) {
-    alert("Hello world!");
+    alert('Hello world!')
   }
-});
+})
 </script>
 ```
