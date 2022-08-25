@@ -12,7 +12,9 @@ Will show (almost) all UI text in Japanese.
 Available locales are listed [here](configuration#locale).
 
 ## Change UI Theme
-```ts
-<MonacoEditor :options="{ theme: 'vs-dark' }" />
+```vue
+<template>
+  <MonacoEditor :options="{ theme: 'vs-dark' }" />
+</template>
 ```
 Will show UI in dark mode. 

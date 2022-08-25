@@ -12,7 +12,9 @@ export default defineNuxtConfig({
 使用可能な言語は[こちら](configuration#locale)に記載しています。
 
 ## テーマの変更
-```ts
-<MonacoEditor :options="{ theme: 'vs-dark' }" />
+```vue
+<template>
+  <MonacoEditor :options="{ theme: 'vs-dark' }" />
+</template>
 ```
 このように設定すると、UIがダークモードで表示されます。
