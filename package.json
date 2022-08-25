@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/e-chan1007/nuxt-monaco-editor.git"
   },
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "exports": {
