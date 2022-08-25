@@ -2,7 +2,7 @@ import { defineUserConfig, defaultTheme } from 'vuepress'
 
 export default defineUserConfig({
   base: (process.env.BASE_URL as `/${string}/` | undefined) || '/',
-  title: 'nuxt-monaco-editor',
+  title: 'Nuxt Monaco Editor',
   description: 'The easist way to get along with Monaco Editor.',
   locales: {
     '/': {
@@ -17,6 +17,8 @@ export default defineUserConfig({
     docsBranch: 'main',
     docsDir: 'docs',
     editLinkPattern: ':repo/edit/:branch/:path',
+    logo: "/images/logo.svg",
+    logoDark: "/images/logo-dark.svg",
     locales: {
       '/': {
         selectLanguageName: 'English',

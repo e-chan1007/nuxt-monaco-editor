@@ -1,7 +1,7 @@
 ---
 home: true
 
-heroText: Nuxt Monaco-Editor
+heroText: Nuxt Monaco Editor
 tagline: The easist way to get along with Monaco Editor.
 
 actions:
