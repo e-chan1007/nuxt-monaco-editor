@@ -43,7 +43,7 @@
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
-    "husky": "^8.0.0",
+    "husky": "^8.0.1",
     "monaco-editor": "^0.34.0",
     "nuxt": "^3.0.0-rc.8",
     "pinst": "^3.0.0",
@@ -51,7 +51,6 @@
     "remark-lint": "^9.1.1",
     "remark-preset-lint-recommended": "^6.1.2",
     "standard-version": "^9.5.0",
-    "vitepress": "^1.0.0-alpha.10",
     "vuepress": "next"
   },
   "peerDependencies": {
