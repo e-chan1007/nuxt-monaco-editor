@@ -1,6 +1,7 @@
 # Configuration
 ```ts
 export interface ModuleOptions {
+  dest?: string,
   locale?: MonacoEditorLocale,
   componentName?: {
     codeEditor?: string,
@@ -9,6 +10,7 @@ export interface ModuleOptions {
 }
 
 const DEFAULTS: ModuleOptions = {
+  dest: '_monaco',
   locale: 'en',
   componentName: {
     codeEditor: 'MonacoEditor',
@@ -16,6 +18,10 @@ const DEFAULTS: ModuleOptions = {
   }
 }
 ```
+
+## `dest`
+
+Set where monaco-editor should be placed after build. This path will append to `app.baseURL` of nuxt.config.
 
 ## `locale`
 

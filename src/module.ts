@@ -5,6 +5,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 export type MonacoEditorLocale = 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw' | 'en';
 
 export interface ModuleOptions {
+  dest?: string,
   locale?: MonacoEditorLocale,
   componentName?: {
     codeEditor?: string,
@@ -13,6 +14,7 @@ export interface ModuleOptions {
 }
 
 const DEFAULTS: ModuleOptions = {
+  dest: '_monaco',
   locale: 'en',
   componentName: {
     codeEditor: 'MonacoEditor',
@@ -29,14 +31,17 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: DEFAULTS,
   setup (options, nuxt) {
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+    const { resolve: resolveURL } = createResolver(nuxt.options.app.baseURL)
     const { resolve } = createResolver(runtimeDir)
+    const monacoEditorLocation = resolveURL(options.dest)
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push('monaco-editor')
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale
+    nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCATION__ = monacoEditorLocation
     const [viteStaticCopyServePlugin, viteStaticCopyBuildPlugin] = viteStaticCopy({
       targets: [{
         src: require.resolve('monaco-editor/min/vs/loader.js').replace(/\/vs\/loader\.js$/, '/*'),
-        dest: '_monaco'
+        dest: monacoEditorLocation.slice(1)
       }]
     })
     addVitePlugin(viteStaticCopyServePlugin)
