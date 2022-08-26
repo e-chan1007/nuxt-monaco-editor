@@ -10,7 +10,7 @@ export default defineNuxtPlugin(_nuxtApp => new Promise<void>((resolve) => {
   const script = document.createElement('script')
   script.src = '/_monaco/vs/loader.js'
   script.onload = () => {
-    require.config({ paths: { vs: '_monaco/vs' } })
+    require.config({ paths: { vs: '/_monaco/vs' } })
     if (locale !== 'en') {
       require.config({
         'vs/nls': {
