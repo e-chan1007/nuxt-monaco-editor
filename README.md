@@ -35,6 +35,7 @@ export default defineNuxtConfig({
 export default defineNuxtConfig({
   monacoEditor: {
     // These are default values:
+    dest: '_monaco',
     locale: 'en',
     componentName: {
       codeEditor: 'MonacoEditor',

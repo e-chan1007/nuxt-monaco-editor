@@ -40,7 +40,10 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCATION__ = monacoEditorLocation
     const [viteStaticCopyServePlugin, viteStaticCopyBuildPlugin] = viteStaticCopy({
       targets: [{
-        src: require.resolve('monaco-editor/min/vs/loader.js').replace(/\/vs\/loader\.js$/, '/*'),
+        src: require
+          .resolve('monaco-editor/min/vs/loader.js')
+          .replace(/\\/g, '/')
+          .replace(/\/vs\/loader\.js$/, '/*'),
         dest: monacoEditorLocation.slice(1)
       }]
     })
