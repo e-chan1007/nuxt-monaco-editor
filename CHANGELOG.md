@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.1...v1.0.2) (2022-09-03)
+
+
+### Fix
+
+* update nuxt version constraint ([dde8980](https://github.com/e-chan1007/nuxt-monaco-editor/commit/dde898012a3313040121fac136f24d43f14e4f94))
+
 ### [1.0.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.0...v1.0.1) (2022-08-26)
 
 
