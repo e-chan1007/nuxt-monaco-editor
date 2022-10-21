@@ -1,6 +1,12 @@
 {
   "name": "nuxt-monaco-editor",
+  "description": "Integrate monaco-editor with Nuxt (3)",
+  "keywords": [
+    "monaco-editor",
+    "nuxt"
+  ],
   "author": "e-chan1007",
+  "homepage": "https://e-chan1007.github.io/nuxt-monaco-editor",
   "repository": {
     "type": "git",
     "url": "https://github.com/e-chan1007/nuxt-monaco-editor.git"
@@ -34,18 +40,18 @@
     "docs:serve": "vuepress serve docs --port 3000"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.8",
-    "vite-plugin-static-copy": "^0.7.0"
+    "@nuxt/kit": "^3.0.0-rc.12",
+    "vite-plugin-static-copy": "^0.9.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
     "husky": "^8.0.1",
-    "monaco-editor": "^0.34.0",
-    "nuxt": "^3.0.0-rc.8",
+    "monaco-editor": "^0.34.1",
+    "nuxt": "3.0.0-rc.12",
     "pinst": "^3.0.0",
     "remark-cli": "^11.0.0",
     "remark-lint": "^9.1.1",
