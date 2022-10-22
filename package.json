@@ -57,7 +57,7 @@
     "remark-lint": "^9.1.1",
     "remark-preset-lint-recommended": "^6.1.2",
     "standard-version": "^9.5.0",
-    "vuepress": "next"
+    "vuepress": "2.0.0-beta.51"
   },
   "peerDependencies": {
     "monaco-editor": "*"
