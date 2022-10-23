@@ -43,6 +43,7 @@ let ignoreWatch = false
 let editor: Monaco.editor.IStandaloneDiffEditor
 let originalModel: Monaco.editor.ITextModel
 let modifiedModel: Monaco.editor.ITextModel
+const editorRef = ref(editor)
 
 watch(() => [props.original, props.modelValue], () => {
   if (ignoreWatch) {
@@ -73,11 +74,12 @@ defineExpose({
    * Monaco editor instance
    */
   // @ts-ignore
-  $editor: editor
+  $editor: editorRef
 })
 
 onMounted(() => {
   editor = monaco.editor.createDiffEditor(editorElement.value!, props.options)
+  editorRef.value = editor
   originalModel = monaco.editor.createModel(props.original, props.lang)
   modifiedModel = monaco.editor.createModel(props.modelValue, props.lang)
   editor.setModel({

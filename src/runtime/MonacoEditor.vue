@@ -43,6 +43,7 @@ const monaco = useMonaco()!
 let ignoreWatch = false
 let editor: Monaco.editor.IStandaloneCodeEditor
 let model: Monaco.editor.ITextModel
+const editorRef = ref(editor)
 
 watch(() => props.modelValue, () => {
   if (ignoreWatch) {
@@ -67,11 +68,12 @@ defineExpose({
    * Monaco editor instance
    */
   // @ts-ignore
-  $editor: editor
+  $editor: editorRef
 })
 
 onMounted(() => {
   editor = monaco.editor.create(editorElement.value!, props.options)
+  editorRef.value = editor
   model = monaco.editor.createModel(props.modelValue, lang.value)
   editor.setModel(model)
 
