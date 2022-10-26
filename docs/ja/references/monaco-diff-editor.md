@@ -48,6 +48,16 @@ const modifiedValue = ref('変更後の値')
 
 使用可能な設定の一覧は[こちら](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneDiffEditorConstructionOptions.html)にあります。
 
+## イベント
+```ts
+interface Emits {
+  (event: 'update:modelValue', value: string): void
+  (event: 'load', editor: monaco.editor.IStandaloneDiffEditor): void
+}
+```
+### `load`
+エディタの読み込みが完了したときに、[`IStandaloneDiffEditor`](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneDiffEditor.html)を引数として呼び出されます。
+
 ## `<MonacoDiffEditor>`の`Ref`の使用
 `ref` と `$editor` を用いることで、エディタのインスタンスに直接アクセスできます。
 ```vue

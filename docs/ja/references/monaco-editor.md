@@ -44,6 +44,16 @@ const value = ref('')
 
 使用可能な設定の一覧は[こちら](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html)にあります。
 
+## イベント
+```ts
+interface Emits {
+  (event: 'update:modelValue', value: string): void
+  (event: 'load', editor: monaco.editor.IStandaloneCodeEditor): void
+}
+```
+### `load`
+エディタの読み込みが完了したときに、[`IStandaloneCodeEditor`](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneCodeEditor.html)を引数として呼び出されます。
+
 ## `<MonacoEditor>`の`Ref`の使用
 `ref` と `$editor` を用いることで、エディタのインスタンスに直接アクセスできます。
 ```vue

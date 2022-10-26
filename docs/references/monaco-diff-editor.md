@@ -48,6 +48,16 @@ You can also change the options after the editor mounted.
 
 Available options are listed [here](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneDiffEditorConstructionOptions.html).
 
+## Events
+```ts
+interface Emits {
+  (event: 'update:modelValue', value: string): void
+  (event: 'load', editor: monaco.editor.IStandaloneDiffEditor): void
+}
+```
+### `load`
+Emitted with an instance of [`IStandaloneDiffEditor`](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneDiffEditor.html) when the editor is loaded
+
 ## `Ref` of `<MonacoDiffEditor>`
 You can access to the editor instanc by using `ref` and `$editor`.
 ```vue

@@ -44,6 +44,16 @@ You can also change the options after the editor mounted.
 
 Available options are listed [here](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html).
 
+## Events
+```ts
+interface Emits {
+  (event: 'update:modelValue', value: string): void
+  (event: 'load', editor: monaco.editor.IStandaloneCodeEditor): void
+}
+```
+### `load`
+Emitted with an instance of [`IStandaloneCodeEditor`](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneCodeEditor.html) when the editor is loaded
+
 ## `Ref` of `<MonacoEditor>`
 You can access to the editor instanc by using `ref` and `$editor`.
 ```vue
