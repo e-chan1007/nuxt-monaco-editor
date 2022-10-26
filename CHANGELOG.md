@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.5...v1.0.6) (2022-10-26)
+
+
+### Bug Fixes
+
+* destination where monaco-editor is copied was wrong ([f3a839e](https://github.com/e-chan1007/nuxt-monaco-editor/commit/f3a839eab2a6602aa582d772e7a54d8573237f81))
+
 ### [1.0.5](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.4...v1.0.5) (2022-10-26)
 
 
