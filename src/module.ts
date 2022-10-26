@@ -40,14 +40,14 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCATION__ = monacoEditorLocation
 
     extendViteConfig(async (config) => {
-      const shouldAppendURLPrefix = await checkNuxtCompatibility({ nuxt: '^3.0.0-rc.12' }) && nuxt.options.dev
+      const shouldAppendURLPrefix = await checkNuxtCompatibility({ nuxt: '^3.0.0-rc.12' })
       const viteStaticCopyPlugin = viteStaticCopy({
         targets: [{
           src: require
             .resolve('monaco-editor/min/vs/loader.js')
             .replace(/\\/g, '/')
             .replace(/\/vs\/loader\.js$/, '/*'),
-          dest: (shouldAppendURLPrefix ? '__url/' : '') + monacoEditorLocation.slice(1)
+          dest: nuxt.options.dev ? ((shouldAppendURLPrefix ? '__url/' : '') + monacoEditorLocation.slice(1)) : options.dest
         }]
       })
       config.plugins.push(...viteStaticCopyPlugin)
