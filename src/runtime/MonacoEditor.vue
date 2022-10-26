@@ -40,17 +40,12 @@ const lang = computed(() => props.lang || props.options.language)
 const editorElement = ref<HTMLDivElement>()
 const monaco = useMonaco()!
 
-let ignoreWatch = false
 let editor: Monaco.editor.IStandaloneCodeEditor
 let model: Monaco.editor.ITextModel
-const editorRef = ref(editor)
+const editorRef = ref()
 
 watch(() => props.modelValue, () => {
-  if (ignoreWatch) {
-    ignoreWatch = false
-    return
-  }
-  editor?.setValue(props.modelValue)
+  if (editor?.getValue() !== props.modelValue) { editor?.setValue(props.modelValue) }
 })
 
 watch(() => props.lang, () => {
@@ -67,7 +62,6 @@ defineExpose({
   /**
    * Monaco editor instance
    */
-  // @ts-ignore
   $editor: editorRef
 })
 
@@ -78,7 +72,6 @@ onMounted(() => {
   editor.setModel(model)
 
   editor.onDidChangeModelContent(() => {
-    ignoreWatch = true
     emit('update:modelValue', editor.getValue())
   })
 
