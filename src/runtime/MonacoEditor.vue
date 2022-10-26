@@ -25,6 +25,7 @@ interface Props {
 
 interface Emits {
   (event: 'update:modelValue', value: string): void
+  (event: 'load', editor: Monaco.editor.IStandaloneCodeEditor): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -68,6 +69,7 @@ defineExpose({
 onMounted(() => {
   editor = monaco.editor.create(editorElement.value!, props.options)
   editorRef.value = editor
+  emit('load', editor)
   model = monaco.editor.createModel(props.modelValue, lang.value)
   editor.setModel(model)
 

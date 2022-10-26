@@ -25,6 +25,7 @@ interface Props {
 
 interface Emits {
   (event: 'update:modelValue', value: string): void
+  (event: 'load', editor: Monaco.editor.IStandaloneDiffEditor): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -39,7 +40,6 @@ const isLoading = ref(true)
 const editorElement = ref<HTMLDivElement>()
 const monaco = useMonaco()!
 
-let ignoreWatch = false
 let editor: Monaco.editor.IStandaloneDiffEditor
 let originalModel: Monaco.editor.ITextModel
 let modifiedModel: Monaco.editor.ITextModel
@@ -77,6 +77,7 @@ defineExpose({
 onMounted(() => {
   editor = monaco.editor.createDiffEditor(editorElement.value!, props.options)
   editorRef.value = editor
+  emit('load', editor)
   originalModel = monaco.editor.createModel(props.original, props.lang)
   modifiedModel = monaco.editor.createModel(props.modelValue, props.lang)
   editor.setModel({
@@ -85,7 +86,6 @@ onMounted(() => {
   })
 
   editor.onDidUpdateDiff(() => {
-    ignoreWatch = true
     emit('update:modelValue', editor.getModel()!.modified.getValue())
   })
 
