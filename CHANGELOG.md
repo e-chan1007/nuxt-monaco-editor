@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.4...v1.0.5) (2022-10-26)
+
+
+### Features
+
+* add `load` event for `<Monaco(Diff)Editor>` ([505896a](https://github.com/e-chan1007/nuxt-monaco-editor/commit/505896a35ee8b4a88874b32d8e702e87b67ef754))
+
+
+### Bug Fixes
+
+* changing v-model is sometimes ignored ([#13](https://github.com/e-chan1007/nuxt-monaco-editor/issues/13)) ([7a9a3d6](https://github.com/e-chan1007/nuxt-monaco-editor/commit/7a9a3d6e6305ec3ce1a2e9ed0fe317a7211781e3))
+
 ### [1.0.4](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.3...v1.0.4) (2022-10-23)
 
 
