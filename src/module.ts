@@ -33,10 +33,10 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     const { resolve: resolveURL } = createResolver(nuxt.options.app.baseURL)
     const { resolve } = createResolver(runtimeDir)
-    const monacoEditorLocation = resolveURL(options.dest)
+    const monacoEditorLocation = resolveURL(options.dest!)
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push('monaco-editor')
-    nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale
+    nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale!
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCATION__ = monacoEditorLocation
 
     extendViteConfig(async (config) => {
@@ -47,9 +47,10 @@ export default defineNuxtModule<ModuleOptions>({
             .resolve('monaco-editor/min/vs/loader.js')
             .replace(/\\/g, '/')
             .replace(/\/vs\/loader\.js$/, '/*'),
-          dest: nuxt.options.dev ? ((shouldAppendURLPrefix ? '__url/' : '') + monacoEditorLocation.slice(1)) : options.dest
+          dest: nuxt.options.dev ? ((shouldAppendURLPrefix ? '__url/' : '') + monacoEditorLocation.slice(1)) : options.dest!
         }]
       })
+      if (!config.plugins) { config.plugins = [] }
       config.plugins.push(...viteStaticCopyPlugin)
     })
 
