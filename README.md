@@ -2,6 +2,7 @@
 [![npm version](https://badge.fury.io/js/nuxt-monaco-editor.svg)](https://badge.fury.io/js/nuxt-monaco-editor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8b4585be9901491795f8b3c2f5dbb680)](https://www.codacy.com/gh/e-chan1007/nuxt-monaco-editor/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=e-chan1007/nuxt-monaco-editor&amp;utm_campaign=Badge_Grade)
+[![Test result](https://github.com/e-chan1007/nuxt-monaco-editor/actions/workflows/test.yml/badge.svg)](https://github.com/e-chan1007/nuxt-monaco-editor/actions/workflows/test.yml)
 
 Integrate [monaco-editor](https://microsoft.github.io/monaco-editor/) with Nuxt
 
