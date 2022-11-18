@@ -41,8 +41,8 @@
     "docs:serve": "vuepress serve docs --port 3000"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.13",
-    "vite-plugin-static-copy": "^0.11.1"
+    "@nuxt/kit": "^3.0.0",
+    "vite-plugin-static-copy": "^0.12.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
@@ -53,15 +53,15 @@
     "eslint": "^8.27.0",
     "husky": "^8.0.2",
     "monaco-editor": "^0.34.1",
-    "nuxt": "3.0.0-rc.13",
+    "nuxt": "3.0.0",
     "pinst": "^3.0.0",
-    "playwright": "^1.27.1",
+    "playwright": "^1.28.0",
     "remark-cli": "^11.0.0",
     "remark-lint": "^9.1.1",
     "remark-preset-lint-recommended": "^6.1.2",
     "standard-version": "^9.5.0",
-    "vitest": "^0.25.1",
-    "vuepress": "2.0.0-beta.53"
+    "vitest": "^0.25.2",
+    "vuepress": "2.0.0-beta.50"
   },
   "peerDependencies": {
     "monaco-editor": "*"
