@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.6...v1.1.0) (2022-11-18)
+
+
+### Features
+
+* set preload header ([ae92e18](https://github.com/e-chan1007/nuxt-monaco-editor/commit/ae92e18ef5fbd77114b6350526ad29313047c81e))
+* upgrade nuxt ([7463610](https://github.com/e-chan1007/nuxt-monaco-editor/commit/7463610724557fdffeae450a359160c3ef26ef0c))
+
 ### [1.0.6](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.5...v1.0.6) (2022-10-26)
 
 
