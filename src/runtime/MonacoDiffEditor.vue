@@ -18,7 +18,7 @@ interface Props {
   /**
    * Options passed to the second argument of `monaco.editor.createDiffEditor`
    */
-  options?: Monaco.editor.IStandaloneDiffEditorConstructionOptions
+  options?: Monaco.editor.IStandaloneDiffEditorConstructionOptions;
   original?: string;
   modelValue?: string;
 }
@@ -77,7 +77,6 @@ defineExpose({
 onMounted(() => {
   editor = monaco.editor.createDiffEditor(editorElement.value!, props.options)
   editorRef.value = editor
-  emit('load', editor)
   originalModel = monaco.editor.createModel(props.original, props.lang)
   modifiedModel = monaco.editor.createModel(props.modelValue, props.lang)
   editor.setModel({
@@ -90,5 +89,6 @@ onMounted(() => {
   })
 
   isLoading.value = false
+  emit('load', editor)
 })
 </script>

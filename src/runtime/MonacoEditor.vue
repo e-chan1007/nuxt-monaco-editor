@@ -18,7 +18,7 @@ interface Props {
   /**
    * Options passed to the second argument of `monaco.editor.create`
    */
-  options?: Monaco.editor.IStandaloneEditorConstructionOptions
+  options?: Monaco.editor.IStandaloneEditorConstructionOptions;
   modelValue?: string;
 }
 
@@ -68,14 +68,12 @@ defineExpose({
 onMounted(() => {
   editor = monaco.editor.create(editorElement.value!, props.options)
   editorRef.value = editor
-  emit('load', editor)
   model = monaco.editor.createModel(props.modelValue, lang.value)
   editor.setModel(model)
-
   editor.onDidChangeModelContent(() => {
     emit('update:modelValue', editor.getValue())
   })
-
   isLoading.value = false
+  emit('load', editor)
 })
 </script>
