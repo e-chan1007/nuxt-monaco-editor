@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.1.0...v1.1.1) (2022-12-09)
+
+
+### Features
+
+* adjust timings of emitting `load` event ([c7b7796](https://github.com/e-chan1007/nuxt-monaco-editor/commit/c7b7796ec88be107a1d13a0a6c48473b4e858ebf))
+
 ## [1.1.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.0.6...v1.1.0) (2022-11-18)
 
 
