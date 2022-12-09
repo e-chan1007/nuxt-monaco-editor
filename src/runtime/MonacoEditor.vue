@@ -5,9 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from '@vue/reactivity'
 import type * as Monaco from 'monaco-editor'
-import { onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useMonaco } from './composables'
 
 interface Props {
