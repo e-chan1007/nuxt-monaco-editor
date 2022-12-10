@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
           cache: yarn
       - name: Setup Pages
         id: pages
@@ -40,14 +40,14 @@ jobs:
         run: yarn install
       - name: Prepare Nuxt
         run: yarn dev:prepare
-      - name: Static HTML export with Vuepress
-        run: yarn docs:build
+      - name: Static HTML export with Docus
+        run: yarn docs:generate
         env:
-          BASE_URL: /nuxt-monaco-editor/
+          NUXT_APP_BASE_URL: /nuxt-monaco-editor/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./docs/.vuepress/dist
+          path: ./docs/dist
 
   deploy:
     environment:
