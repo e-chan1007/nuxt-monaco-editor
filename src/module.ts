@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, extendViteConfig, checkNuxtCompatibility } from '@nuxt/kit'
+import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, extendViteConfig, checkNuxtCompatibility, getNuxtVersion } from '@nuxt/kit'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export type MonacoEditorLocale = 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw' | 'en';
@@ -40,14 +40,15 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale!
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCATION__ = monacoEditorLocation
 
-    extendViteConfig((config) => {
+    extendViteConfig(async (config) => {
+      const shouldAppendURLPrefix = (await getNuxtVersion() as string).startsWith('3.0.0')
       const viteStaticCopyPlugin = viteStaticCopy({
         targets: [{
           src: require
             .resolve('monaco-editor/min/vs/loader.js')
             .replace(/\\/g, '/')
             .replace(/\/vs\/loader\.js$/, '/*'),
-          dest: options.dest!
+          dest: nuxt.options.dev ? ((shouldAppendURLPrefix ? '__url/' : '') + monacoEditorLocation.slice(1)) : options.dest!
         }]
       })
       if (!config.plugins) { config.plugins = [] }
