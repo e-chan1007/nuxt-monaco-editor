@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { describe, expect, test } from 'vitest'
-import { setup, $fetch, createPage } from '@nuxt/test-utils-edge'
+import { setup, $fetch, createPage } from '@nuxt/test-utils'
 
 describe('SSR (dev: true)', async () => {
   await setup({
