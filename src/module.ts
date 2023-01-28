@@ -34,7 +34,6 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve: resolveURL } = createResolver(nuxt.options.app.baseURL)
     const { resolve } = createResolver(runtimeDir)
     const monacoEditorLocation = resolveURL(options.dest!)
-    nuxt.options.app.head.script?.push({ src: `${monacoEditorLocation}/vs/loader.js` })
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false)
     nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale!
