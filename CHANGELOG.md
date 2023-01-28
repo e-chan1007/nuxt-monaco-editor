@@ -2,12 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.1.3-beta.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.1.3-beta.0...v1.1.3-beta.1) (2023-01-27)
+### [1.1.3](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.1.3-beta.0...v1.1.3) (2023-01-28)
 
 
-### Bug Fixes
+### ⚠ BREAKING CHANGES
 
-* keep compatibility with nuxt 3.0.0 ([90840f0](https://github.com/e-chan1007/nuxt-monaco-editor/commit/90840f076cb14e98067cdf7c832157f07c684ac6))
+* drop support for `nuxt@^3.0.0` ([1d4d22c](https://github.com/e-chan1007/nuxt-monaco-editor/commit/1d4d22cf094abad4b2f475151483b87c6a9b4589))
 
 ### [1.1.3-beta.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.1.2...v1.1.3-beta.0) (2023-01-27)
 
