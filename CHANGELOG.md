@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-beta.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.1.4...v1.2.0-beta.0) (2023-03-24)
+
+
+### Features
+
+* load monaco-editor with ESM ([#1](https://github.com/e-chan1007/nuxt-monaco-editor/issues/1), [#19](https://github.com/e-chan1007/nuxt-monaco-editor/issues/19), [#26](https://github.com/e-chan1007/nuxt-monaco-editor/issues/26)) ([f1ea2e0](https://github.com/e-chan1007/nuxt-monaco-editor/commit/f1ea2e0bf31fbdc1adf7fcbb3b1184c5b6465aed))
+
+
+### Bug Fixes
+
+* copy esm to `_nuxt` ([fcefdbf](https://github.com/e-chan1007/nuxt-monaco-editor/commit/fcefdbf992bcbdc6a9d9b4ebed5ba490233be427))
+* resolve paths correctly ([01b6450](https://github.com/e-chan1007/nuxt-monaco-editor/commit/01b645077abd7b602b30c9dbdda91372289a8d93))
+* update link to IStandaloneCodeEditor in monaco editor official documentation ([9debaa8](https://github.com/e-chan1007/nuxt-monaco-editor/commit/9debaa8e33296ea4babe7eb6fe3bd06396479841))
+
 ### [1.1.4](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.1.3...v1.1.4) (2023-02-22)
 
 
