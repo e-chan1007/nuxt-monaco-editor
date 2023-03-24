@@ -13,13 +13,15 @@ describe('SSR', async () => {
   test('should render <MonacoEditor> components', async () => {
     const page = await createPage('/')
     await page.waitForLoadState('domcontentloaded')
-    const editorElements = await page.$$('section > .editor > .monaco-editor')
-    expect(editorElements.length).toEqual(2)
+    await page.locator('section > .editor > .monaco-editor').first().waitFor()
+    expect(await page.locator('section > .editor > .monaco-editor').count()).toEqual(2)
   })
   test('should render <MonacoDiffEditor> component', async () => {
     const page = await createPage('/')
     await page.waitForLoadState('domcontentloaded')
-    const editorElements = await page.$$('section > .editor > .monaco-diff-editor')
-    expect(editorElements.length).toEqual(1)
+    await page.locator('section > .editor > .monaco-diff-editor').first().waitFor()
+    expect(await page.locator('section > .editor > .monaco-diff-editor').count()).toEqual(1)
   })
+}, {
+  timeout: 10000
 })

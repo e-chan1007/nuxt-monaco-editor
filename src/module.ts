@@ -36,17 +36,6 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false)
 
     addVitePlugin(vitePlugin(options))
-    extendViteConfig((config) => {
-      if (!config.optimizeDeps) { config.optimizeDeps = {} }
-      if (!config.optimizeDeps.include) { config.optimizeDeps.include = [] }
-      config.optimizeDeps?.include.push(
-        'monaco-editor/esm/vs/language/json/json.worker',
-        'monaco-editor/esm/vs/language/css/css.worker',
-        'monaco-editor/esm/vs/language/html/html.worker',
-        'monaco-editor/esm/vs/language/typescript/ts.worker',
-        'monaco-editor/esm/vs/editor/editor.worker'
-      )
-    })
 
     addPluginTemplate(isDev ? resolve('plugin-dev.client') : resolve('plugin-prod.client'))
     addComponent({ name: options.componentName!.codeEditor!, filePath: resolve('MonacoEditor.client.vue') })
