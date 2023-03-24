@@ -1,21 +1,31 @@
 import { fileURLToPath } from 'node:url'
 import fs from 'fs/promises'
+import { createRequire } from 'node:module'
 import { createResolver } from '@nuxt/kit'
 import { Plugin } from 'vite'
-import { ModuleOptions } from './module'
+import type { NuxtOptions } from 'nuxt/schema'
+import type { ModuleOptions } from './module'
 
 const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 const { resolve } = createResolver(runtimeDir)
 const rewrittenMonacoFiles = new Map<string, string>()
 const nlsPath = resolve('nls.mjs')
 
-const plugin = (options: ModuleOptions): Plugin => ({
+const { resolve: resolveModule } = createRequire(import.meta.url)
+
+const plugin = (options: ModuleOptions, nuxtOptions: NuxtOptions): Plugin => ({
   name: 'vite-plugin-nuxt-monaco-editor',
   enforce: 'pre',
   resolveId (src) {
-    if (src.includes('monaco-editor/esm')) { fs.appendFile('log.log', src + '\n') }
-    if (src.startsWith('/__skip_vite/node_modules/monaco-editor/esm/vs/') && src.endsWith('.js?worker')) {
-      return src.replace('/__skip_vite/', '')
+    if (src.includes('monaco-editor/esm/vs/') && src.endsWith('.js?worker')) {
+      return resolveModule(src
+        .replace('?worker', '')
+        .replace('__skip_vite', '')
+        .replace('node_modules', '')
+        .replace(nuxtOptions.app.baseURL, '/')
+        .replace(/\/\/+/g, '/')
+        .replace(/^\//, '')
+      )
     }
   },
   async load (id) {

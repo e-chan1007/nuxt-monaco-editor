@@ -35,7 +35,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false)
 
-    addVitePlugin(vitePlugin(options))
+    addVitePlugin(vitePlugin(options, nuxt.options))
 
     addPluginTemplate(isDev ? resolve('plugin-dev.client') : resolve('plugin-prod.client'))
     addComponent({ name: options.componentName!.codeEditor!, filePath: resolve('MonacoEditor.client.vue') })
