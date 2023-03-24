@@ -1,11 +1,10 @@
-import { fileURLToPath } from 'url'
-import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, addVitePlugin } from '@nuxt/kit'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { fileURLToPath } from 'node:url'
+import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, addVitePlugin, extendViteConfig, addPluginTemplate } from '@nuxt/kit'
+import vitePlugin from './vitePlugin'
 
-export type MonacoEditorLocale = 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'ru' | 'zh-cn' | 'zh-tw' | 'en';
+export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
 
 export interface ModuleOptions {
-  dest?: string,
   locale?: MonacoEditorLocale,
   componentName?: {
     codeEditor?: string,
@@ -14,7 +13,6 @@ export interface ModuleOptions {
 }
 
 const DEFAULTS: ModuleOptions = {
-  dest: '_monaco',
   locale: 'en',
   componentName: {
     codeEditor: 'MonacoEditor',
@@ -31,30 +29,28 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: DEFAULTS,
   setup (options, nuxt) {
     const isDev = nuxt.options.dev
-    options.dest = (isDev ? '_nuxt_monaco_editor/' : '_nuxt/') + options.dest
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-    const { resolve: resolveURL } = createResolver(nuxt.options.app.baseURL)
     const { resolve } = createResolver(runtimeDir)
-    const monacoEditorLocation = resolveURL(options.dest)
+
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false)
-    nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCALE__ = options.locale!
-    nuxt.options.runtimeConfig.app.__MONACO_EDITOR_LOCATION__ = monacoEditorLocation
 
-    const viteStaticCopyPlugin = viteStaticCopy({
-      targets: [{
-        src: require
-          .resolve('monaco-editor/min/vs/loader.js')
-          .replace(/\\/g, '/')
-          .replace(/\/vs\/loader\.js$/, '/*'),
-        dest: options.dest
-      }]
+    addVitePlugin(vitePlugin(options))
+    extendViteConfig((config) => {
+      if (!config.optimizeDeps) { config.optimizeDeps = {} }
+      if (!config.optimizeDeps.include) { config.optimizeDeps.include = [] }
+      config.optimizeDeps?.include.push(
+        'monaco-editor/esm/vs/language/json/json.worker',
+        'monaco-editor/esm/vs/language/css/css.worker',
+        'monaco-editor/esm/vs/language/html/html.worker',
+        'monaco-editor/esm/vs/language/typescript/ts.worker',
+        'monaco-editor/esm/vs/editor/editor.worker'
+      )
     })
-    addVitePlugin(viteStaticCopyPlugin)
 
-    addPlugin(resolve('plugin.client'))
-    addComponent({ name: options.componentName!.codeEditor!, filePath: resolve('MonacoEditor.vue') })
-    addComponent({ name: options.componentName!.diffEditor!, filePath: resolve('MonacoDiffEditor.vue') })
+    addPluginTemplate(isDev ? resolve('plugin-dev.client') : resolve('plugin-prod.client'))
+    addComponent({ name: options.componentName!.codeEditor!, filePath: resolve('MonacoEditor.client.vue') })
+    addComponent({ name: options.componentName!.diffEditor!, filePath: resolve('MonacoDiffEditor.client.vue') })
     addImports({ name: 'useMonaco', as: 'useMonaco', from: resolve('composables') })
   }
 })

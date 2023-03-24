@@ -19,9 +19,11 @@
           JavaScript
         </option>
       </select>
-      <MonacoEditor v-model="val" :lang="lang" :options="options" class="editor">
-        Loading...
-      </MonacoEditor>
+      <ClientOnly>
+        <MonacoEditor v-model="val" :lang="lang" :options="options" class="editor">
+          Loading...
+        </MonacoEditor>
+      </ClientOnly>
     </section>
     <section>
       <h2>
@@ -39,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-import type * as monaco from 'monaco-editor'
+import * as monaco from 'monaco-editor'
 
 const lang = ref<'plaintext' | 'html' | 'css' | 'javascript'>('plaintext')
 const options: monaco.editor.IEditorConstructionOptions = {

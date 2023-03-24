@@ -8902,6 +8902,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"monaco-editor-nls@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "monaco-editor-nls@npm:3.0.0"
+  checksum: 935a77ec60a753e518229889360cdf5a666a62d18db9875eb07a20ad17817a009722cc2e56040abf0e85740617cba7482b697e6eab0bf982c61b419afe43416e
+  languageName: node
+  linkType: hard
+
 "monaco-editor@npm:^0.36.1":
   version: 0.36.1
   resolution: "monaco-editor@npm:0.36.1"
@@ -9370,6 +9377,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nuxt-monaco-editor-playground@workspace:playground":
+  version: 0.0.0-use.local
+  resolution: "nuxt-monaco-editor-playground@workspace:playground"
+  languageName: unknown
+  linkType: soft
+
 "nuxt-monaco-editor@workspace:.":
   version: 0.0.0-use.local
   resolution: "nuxt-monaco-editor@workspace:."
@@ -9385,6 +9398,7 @@ __metadata:
     execa: ^7.1.1
     husky: ^8.0.3
     monaco-editor: ^0.36.1
+    monaco-editor-nls: ^3.0.0
     nuxt: ^3.3.1
     pinst: ^3.0.0
     playwright: ^1.32.0

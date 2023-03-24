@@ -18,6 +18,9 @@
     ".": {
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
+    },
+    "./dist/*": {
+      "import": "./dist/*"
     }
   },
   "main": "./dist/module.cjs",
@@ -43,6 +46,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.3.1",
+    "monaco-editor-nls": "^3.0.0",
     "vite-plugin-static-copy": "^0.13.1"
   },
   "devDependencies": {
@@ -77,5 +81,8 @@
       ]
     ]
   },
+  "workspaces": [
+    "playground"
+  ],
   "packageManager": "yarn@3.2.4"
 }
