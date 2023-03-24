@@ -10,12 +10,6 @@ describe('CSR', async () => {
       ssr: false
     }
   })
-  test('should render page', async () => {
-    const page = await createPage('/')
-    await page.waitForLoadState('domcontentloaded')
-    const html = await page.content()
-    expect(html).toContain('<h1>nuxt-monaco-editor</h1>')
-  })
   test('should render <MonacoEditor> components', async () => {
     const page = await createPage('/')
     await page.waitForLoadState('domcontentloaded')

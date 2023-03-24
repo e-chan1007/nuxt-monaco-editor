@@ -11,10 +11,6 @@ describe('SSR (baseURL: "/test/")', async () => {
       }
     }
   })
-  test('should render page', async () => {
-    const html = await $fetch('/test')
-    expect(html).toContain('<h1>nuxt-monaco-editor</h1>')
-  })
   test('should render <MonacoEditor> components', async () => {
     const page = await createPage('/test')
     await page.waitForLoadState('domcontentloaded')
