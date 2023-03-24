@@ -1,33 +1,31 @@
 import { defineNuxtPlugin } from '#app'
-
-/* eslint-disable import/default */
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
-import JSONWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
-import CSSWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
-import HTMLWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
-import TSWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-
 import { _useMonacoState } from './composables'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
+  const getWorkerModule = (moduleUrl: string, label: string) => {
+    return new Worker(new URL(`${nuxtApp.$config.app.baseURL}/_nuxt/nuxt-monaco-editor/vs/${moduleUrl}.js`.replace(/\/\//g, '/'), import.meta.url), {
+      name: label,
+      type: 'module'
+    })
+  }
   self.MonacoEnvironment = {
     getWorker (workerId: string, label: string) {
       switch (label) {
         case 'json':
-          return new JSONWorker()
+          return getWorkerModule('language/json/json.worker', label)
         case 'css':
         case 'scss':
         case 'less':
-          return new CSSWorker()
+          return getWorkerModule('language/css/css.worker', label)
         case 'html':
         case 'handlebars':
         case 'razor':
-          return new HTMLWorker()
+          return getWorkerModule('language/html/html.worker', label)
         case 'typescript':
         case 'javascript':
-          return new TSWorker()
+          return getWorkerModule('language/typescript/ts.worker', label)
         default:
-          return new EditorWorker()
+          return getWorkerModule('editor/editor.worker', label)
       }
     }
   }

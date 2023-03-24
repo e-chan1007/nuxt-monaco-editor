@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, addVitePlugin, extendViteConfig, addPluginTemplate } from '@nuxt/kit'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 import vitePlugin from './vitePlugin'
 
 export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
@@ -37,7 +38,24 @@ export default defineNuxtModule<ModuleOptions>({
 
     addVitePlugin(vitePlugin(options, nuxt.options))
 
-    addPluginTemplate(isDev ? resolve('plugin-dev.client') : resolve('plugin-prod.client'))
+    addVitePlugin(viteStaticCopy({
+      targets: [{
+        src: require
+          .resolve('monaco-editor/esm/metadata.js')
+          .replace(/\\/g, '/')
+          .replace(/\/metadata.js$/, '/*'),
+        dest: '_nuxt/nuxt-monaco-editor'
+      }]
+    }))
+
+    nuxt.hook('build:manifest', (manifest) => {
+      Object.entries(manifest).forEach(([key, entry]) => {
+        if (key.includes('node_modules/monaco-editor/esm/vs')) { entry.isEntry = false }
+      })
+    })
+
+    addPlugin(isDev ? resolve('plugin-dev.client') : resolve('plugin-prod.client'))
+
     addComponent({ name: options.componentName!.codeEditor!, filePath: resolve('MonacoEditor.client.vue') })
     addComponent({ name: options.componentName!.diffEditor!, filePath: resolve('MonacoDiffEditor.client.vue') })
     addImports({ name: 'useMonaco', as: 'useMonaco', from: resolve('composables') })
