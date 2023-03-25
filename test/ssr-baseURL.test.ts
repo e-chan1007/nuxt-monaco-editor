@@ -24,5 +24,5 @@ describe('SSR (baseURL: "/test/")', async () => {
     expect(await page.locator('section > .editor > .monaco-diff-editor').count()).toEqual(1)
   })
 }, {
-  timeout: 30000
+  timeout: 10000
 })

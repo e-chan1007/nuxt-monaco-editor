@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { describe, expect, test } from 'vitest'
 import { setup, $fetch, createPage } from '@nuxt/test-utils'
 
-describe('SSR (dev: true)', async () => {
+describe('SSR', async () => {
   await setup({
     rootDir: fileURLToPath(new URL('../playground', import.meta.url))
   })
@@ -19,5 +19,5 @@ describe('SSR (dev: true)', async () => {
     expect(await page.locator('section > .editor > .monaco-diff-editor').count()).toEqual(1)
   })
 }, {
-  timeout: 60000
+  timeout: 10000
 })
