@@ -45,7 +45,7 @@
     "docs:preview": "nuxt preview docs"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.3.1",
+    "@nuxt/kit": "^3.3.2",
     "monaco-editor-nls": "^3.0.0",
     "vite-plugin-static-copy": "^0.13.1"
   },
@@ -54,13 +54,13 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@nuxt-themes/docus": "^1.9.10",
     "@nuxt/module-builder": "latest",
-    "@nuxt/test-utils": "^3.3.1",
+    "@nuxt/test-utils": "^3.3.2",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.36.0",
     "execa": "^7.1.1",
     "husky": "^8.0.3",
     "monaco-editor": "^0.36.1",
-    "nuxt": "^3.3.1",
+    "nuxt": "^3.3.2",
     "pinst": "^3.0.0",
     "playwright": "^1.32.0",
     "remark-cli": "^11.0.0",
