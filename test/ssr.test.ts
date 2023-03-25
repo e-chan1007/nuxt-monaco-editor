@@ -4,8 +4,7 @@ import { setup, $fetch, createPage } from '@nuxt/test-utils'
 
 describe('SSR (dev: true)', async () => {
   await setup({
-    rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
-    dev: true
+    rootDir: fileURLToPath(new URL('../playground', import.meta.url))
   })
   test('should render <MonacoEditor> components', async () => {
     const page = await createPage('/')
