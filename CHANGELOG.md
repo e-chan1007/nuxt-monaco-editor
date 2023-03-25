@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1-beta.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.1-beta.0...v1.2.1-beta.1) (2023-03-25)
+
 ### [1.2.1-beta.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.0...v1.2.1-beta.0) (2023-03-25)
 
 ## [1.2.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.0-beta.3...v1.2.0) (2023-03-25)
