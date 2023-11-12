@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-import * as monaco from 'monaco-editor'
+import type * as monaco from 'monaco-editor'
 
 const lang = ref<'plaintext' | 'html' | 'css' | 'javascript'>('plaintext')
 const options: monaco.editor.IEditorConstructionOptions = {

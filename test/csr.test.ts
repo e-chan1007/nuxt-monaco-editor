@@ -1,5 +1,4 @@
 import { fileURLToPath } from 'node:url'
-import fs from 'fs/promises'
 import { describe, expect, test } from 'vitest'
 import { setup, createPage } from '@nuxt/test-utils'
 
