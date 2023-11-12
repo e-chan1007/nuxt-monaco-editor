@@ -1,5 +1,5 @@
 import { _useMonacoState } from './composables'
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin } from '#imports'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const getWorkerModule = (moduleUrl: string, label: string) => {

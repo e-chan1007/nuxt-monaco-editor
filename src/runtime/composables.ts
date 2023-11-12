@@ -1,5 +1,5 @@
 import type * as Monaco from 'monaco-editor'
-import { useState } from '#app'
+import { useState } from '#imports'
 
 export const _useMonacoState = () => useState<typeof Monaco | null>('MonacoEditorNamespace', () => null)
 /**
