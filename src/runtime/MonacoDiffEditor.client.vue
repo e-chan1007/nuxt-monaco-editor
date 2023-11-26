@@ -53,10 +53,12 @@ watch(() => [props.original, props.modelValue], () => {
 })
 
 watch(() => props.lang, () => {
+  const originalValue = originalModel?.getValue() || props.original
+  const modifiedValue = modifiedModel?.getValue() || props.modelValue
   if (originalModel) { originalModel.dispose() }
-  if (modifiedModel) { originalModel.dispose() }
-  originalModel = monaco.editor.createModel(props.original, props.lang)
-  modifiedModel = monaco.editor.createModel(props.modelValue, props.lang)
+  if (modifiedModel) { modifiedModel.dispose() }
+  originalModel = monaco.editor.createModel(originalValue, props.lang)
+  modifiedModel = monaco.editor.createModel(modifiedValue, props.lang)
   editor.setModel({
     original: originalModel,
     modified: modifiedModel
