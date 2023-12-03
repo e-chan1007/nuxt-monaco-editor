@@ -93,4 +93,10 @@ onMounted(() => {
   isLoading.value = false
   emit('load', editor)
 })
+
+onUnmounted(() => {
+  editor?.dispose()
+  originalModel?.dispose()
+  modifiedModel?.dispose()
+})
 </script>
