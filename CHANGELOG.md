@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.3...v1.2.4) (2023-12-03)
+
+
+### Bug Fixes
+
+* diffeditor loss value when change lang ([b996f28](https://github.com/e-chan1007/nuxt-monaco-editor/commit/b996f28ad22bd62094161576390c55b4e268928f))
+* import nuxt composables from #imports ([343e227](https://github.com/e-chan1007/nuxt-monaco-editor/commit/343e227a58c32e95515ab57b52400b9351371d32))
+
 ### [1.2.3](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.3-beta.0...v1.2.3) (2023-08-14)
 
 ### [1.2.3-beta.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.2...v1.2.3-beta.0) (2023-08-14)
