@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import fs from 'fs/promises'
 import { createRequire } from 'node:module'
 import { createResolver } from '@nuxt/kit'
-import { Plugin } from 'vite'
+import type { Plugin } from 'vite'
 import type { NuxtOptions } from 'nuxt/schema'
 import type { ModuleOptions } from './module'
 

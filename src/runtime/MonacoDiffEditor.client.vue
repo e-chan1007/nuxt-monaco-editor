@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import type * as Monaco from 'monaco-editor'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { useMonaco } from './composables'
 
 interface Props {
