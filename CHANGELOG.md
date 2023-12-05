@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.4...v1.2.5) (2023-12-05)
+
+
+### Bug Fixes
+
+* onUnmounted is not defined ([c3a1af3](https://github.com/e-chan1007/nuxt-monaco-editor/commit/c3a1af3f1706bba06539676088f70f8c7e6369f2))
+
 ### [1.2.4](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.3...v1.2.4) (2023-12-03)
 
 
