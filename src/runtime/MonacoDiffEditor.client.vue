@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import type * as Monaco from 'monaco-editor'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
 import { useMonaco } from './composables'
 
 interface Props {
@@ -37,13 +37,13 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<Emits>()
 const isLoading = ref(true)
 
-const editorElement = ref<HTMLDivElement>()
+const editorElement = shallowRef<HTMLDivElement>()
 const monaco = useMonaco()!
 
 let editor: Monaco.editor.IStandaloneDiffEditor
 let originalModel: Monaco.editor.ITextModel
 let modifiedModel: Monaco.editor.ITextModel
-const editorRef = ref()
+const editorRef = shallowRef<Monaco.editor.IStandaloneDiffEditor>()
 
 watch(() => [props.original, props.modelValue], () => {
   if (originalModel.getValue() !== props.original || modifiedModel.getValue() !== props.modelValue) {

@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import type * as Monaco from 'monaco-editor'
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
 import { useMonaco } from './composables'
 
 interface Props {
@@ -37,12 +37,12 @@ const isLoading = ref(true)
 
 const lang = computed(() => props.lang || props.options.language)
 
-const editorElement = ref<HTMLDivElement>()
+const editorElement = shallowRef<HTMLDivElement>()
 const monaco = useMonaco()!
 
 let editor: Monaco.editor.IStandaloneCodeEditor
 let model: Monaco.editor.ITextModel
-const editorRef = ref()
+const editorRef = shallowRef<Monaco.editor.IStandaloneCodeEditor>()
 
 watch(() => props.modelValue, () => {
   if (editor?.getValue() !== props.modelValue) { editor?.setValue(props.modelValue) }
