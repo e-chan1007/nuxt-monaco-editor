@@ -12149,6 +12149,7 @@ __metadata:
     "@nuxt/module-builder": "npm:latest"
     "@nuxt/test-utils": "npm:^3.8.1"
     "@nuxtjs/eslint-config-typescript": "npm:^12.1.0"
+    defu: "npm:^6.1.3"
     eslint: "npm:^8.53.0"
     execa: "npm:^8.0.1"
     husky: "npm:^8.0.3"

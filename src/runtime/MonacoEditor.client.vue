@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 import type * as Monaco from 'monaco-editor'
 import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
+import { defu } from 'defu'
 import { useMonaco } from './composables'
 
 interface Props {
@@ -44,6 +45,10 @@ let editor: Monaco.editor.IStandaloneCodeEditor
 let model: Monaco.editor.ITextModel
 const editorRef = shallowRef<Monaco.editor.IStandaloneCodeEditor>()
 
+const defaultOptions: Monaco.editor.IStandaloneEditorConstructionOptions = {
+  automaticLayout: true
+}
+
 watch(() => props.modelValue, () => {
   if (editor?.getValue() !== props.modelValue) { editor?.setValue(props.modelValue) }
 })
@@ -55,7 +60,7 @@ watch(() => props.lang, () => {
 })
 
 watch(() => props.options, () => {
-  editor?.updateOptions(props.options)
+  editor?.updateOptions(defu(props.options, defaultOptions))
 })
 
 defineExpose({
@@ -66,7 +71,7 @@ defineExpose({
 })
 
 onMounted(() => {
-  editor = monaco.editor.create(editorElement.value!, props.options)
+  editor = monaco.editor.create(editorElement.value!, defu(props.options, defaultOptions))
   editorRef.value = editor
   model = monaco.editor.createModel(props.modelValue, lang.value)
   editor.setModel(model)
