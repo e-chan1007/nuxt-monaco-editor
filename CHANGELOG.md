@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.6](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.5...v1.2.6) (2023-12-10)
+
+
+### Features
+
+* make `automaticLayout: true` as a default option ([16c3f10](https://github.com/e-chan1007/nuxt-monaco-editor/commit/16c3f10a7c5e86c12b7115ab509d0bca690afb3b))
+
 ### [1.2.5](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.4...v1.2.5) (2023-12-05)
 
 
