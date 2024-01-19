@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import type * as Monaco from 'monaco-editor'
-import { onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
+import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 import { defu } from 'defu'
 import { useMonaco } from './composables'
 
@@ -44,8 +44,8 @@ const monaco = useMonaco()!
 let editor: Monaco.editor.IStandaloneDiffEditor
 let originalModel: Monaco.editor.ITextModel
 let modifiedModel: Monaco.editor.ITextModel
-const editorRef = shallowRef<Monaco.editor.IStandaloneDiffEditor>()
 
+const editorRef = shallowRef<Monaco.editor.IStandaloneDiffEditor>()
 const defaultOptions: Monaco.editor.IStandaloneEditorConstructionOptions = {
   automaticLayout: true
 }
@@ -81,7 +81,8 @@ defineExpose({
   $editor: editorRef
 })
 
-onMounted(() => {
+watch(editorElement, (newValue, oldValue) => {
+  if (!editorElement.value || oldValue) { return }
   editor = monaco.editor.createDiffEditor(editorElement.value!, defu(props.options, defaultOptions))
   editorRef.value = editor
   originalModel = monaco.editor.createModel(props.original, props.lang)
@@ -99,7 +100,7 @@ onMounted(() => {
   emit('load', editor)
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   editor?.dispose()
   originalModel?.dispose()
   modifiedModel?.dispose()
