@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.7](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.6...v1.2.7) (2024-01-20)
+
+
+### Bug Fixes
+
+* restore explicit imports ([d44ab28](https://github.com/e-chan1007/nuxt-monaco-editor/commit/d44ab28ca35c79edbefd69ea45161b8f51632d29))
+* use `watch` for the target element ([878d3e7](https://github.com/e-chan1007/nuxt-monaco-editor/commit/878d3e735819bbbae245af3db7520a3a00a4237b))
+* use `watch` instead of `onMounted` ([6e48fd1](https://github.com/e-chan1007/nuxt-monaco-editor/commit/6e48fd1672517719917d47a3012feb019d46530d))
+
 ### [1.2.6](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.5...v1.2.6) (2023-12-10)
 
 
