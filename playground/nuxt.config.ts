@@ -6,5 +6,6 @@ export default defineNuxtConfig({
     MonacoEditorModule
   ],
   monacoEditor: {
+
   }
 })
