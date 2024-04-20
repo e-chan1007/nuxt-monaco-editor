@@ -1,0 +1,3 @@
+[submodule "vscode-loc"]
+	path = vscode-loc
+	url = https://github.com/microsoft/vscode-loc.git

@@ -10282,13 +10282,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"monaco-editor-nls@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "monaco-editor-nls@npm:3.1.0"
-  checksum: 10/5ae2c8a92d6d46e4ccf092c55f235c07c17be0e732d14c824e7cb22c33a5985835df7e161a1ce046a5125a1759071390c6c86b9e3f0566342929cb7228fb00be
-  languageName: node
-  linkType: hard
-
 "monaco-editor@npm:^0.47.0":
   version: 0.47.0
   resolution: "monaco-editor@npm:0.47.0"
@@ -10874,8 +10867,8 @@ __metadata:
     eslint: "npm:^8.57.0"
     execa: "npm:^8.0.1"
     husky: "npm:^9.0.11"
+    jiti: "npm:^1.21.0"
     monaco-editor: "npm:^0.47.0"
-    monaco-editor-nls: "npm:^3.1.0"
     nuxt: "npm:^3.11.2"
     pinst: "npm:^3.0.0"
     playwright: "npm:^1.43.1"

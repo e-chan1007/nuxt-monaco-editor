@@ -15,7 +15,7 @@ export function _format (message, args) {
 
 export function localize (path, _data, defaultMessage) {
   const key = typeof _data === 'object' ? _data.key : _data
-  const data = localeData || {}
+  const data = localeData?.contents || {}
   let message = (data[path] || {})[key]
   if (!message) {
     message = defaultMessage
@@ -25,6 +25,14 @@ export function localize (path, _data, defaultMessage) {
     args[_i - 3] = arguments[_i]
   }
   return _format(message, args)
+}
+
+export const localize2 = (data, message, ...args) => {
+  const original = _format(message, args)
+  return {
+    value: original,
+    original
+  }
 }
 
 export function loadMessageBundle (file) {

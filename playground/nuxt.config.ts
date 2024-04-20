@@ -6,6 +6,5 @@ export default defineNuxtConfig({
     MonacoEditorModule
   ],
   monacoEditor: {
-    locale: 'ja'
   }
 })

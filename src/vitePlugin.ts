@@ -36,7 +36,7 @@ const plugin = (options: ModuleOptions, nuxtOptions: NuxtOptions): Plugin => ({
       }
       if (/\/(vscode-)?nls\.m?js/.test(id)) {
         const code = (await fs.readFile(resolve('nls.mjs'), 'utf-8'))
-          .replace('__LOCALE_DATA_PATH__', `monaco-editor-nls/locale/${options.locale}.json`)
+          .replace('__LOCALE_DATA_PATH__', `nuxt-monaco-editor/dist/i18n/${options.locale}.json`)
         rewrittenMonacoFiles.set(id, code)
         return { code }
       }

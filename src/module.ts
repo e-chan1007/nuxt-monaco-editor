@@ -33,6 +33,9 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     const { resolve } = createResolver(runtimeDir)
 
+    if (isDev) {
+      nuxt.options.vite.optimizeDeps?.exclude?.push('monaco-editor')
+    }
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false)
 

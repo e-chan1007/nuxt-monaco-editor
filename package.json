@@ -31,23 +31,23 @@
   "scripts": {
     "postpack": "pinst --enable",
     "postinstall": "husky install && playwright install",
-    "build": "nuxt-module-build",
+    "build": "nuxt-module-build && loc:build",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue . && remark . -q",
     "test": "nuxt test",
     "prepack": "pinst --disable && nuxt-module-build",
     "release": "standard-version",
     "dev": "nuxt dev playground",
     "dev:build": "nuxt build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxt prepare playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxt prepare playground && yarn loc:build",
     "docs:dev": "nuxt dev docs",
     "docs:generate": "nuxt generate docs",
     "docs:prepare": "nuxt prepare docs",
-    "docs:preview": "nuxt preview docs"
+    "docs:preview": "nuxt preview docs",
+    "loc:build": "jiti scripts/build-loc.ts"
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
     "defu": "^6.1.4",
-    "monaco-editor-nls": "^3.1.0",
     "vite-plugin-static-copy": "^1.0.3"
   },
   "devDependencies": {
@@ -60,6 +60,7 @@
     "eslint": "^8.57.0",
     "execa": "^8.0.1",
     "husky": "^9.0.11",
+    "jiti": "^1.21.0",
     "monaco-editor": "^0.47.0",
     "nuxt": "^3.11.2",
     "pinst": "^3.0.0",
