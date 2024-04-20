@@ -8,14 +8,7 @@ Integrate [monaco-editor](https://microsoft.github.io/monaco-editor/) with Nuxt
 
 ## Install
 ```sh
-# npm
-npm install -D monaco-editor nuxt-monaco-editor
-
-# yarn
-yarn add -D monaco-editor nuxt-monaco-editor
-
-# pnpm
-pnpm add -D monaco-editor nuxt-monaco-editor
+npx nuxi@latest module add nuxt-monaco-editor
 ```
 Don't forget to install `monaco-editor`.
 
