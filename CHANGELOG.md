@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.9](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.8...v1.2.9) (2024-04-20)
+
+
+### Bug Fixes
+
+* add locale build for prepack ([d0cf0ed](https://github.com/e-chan1007/nuxt-monaco-editor/commit/d0cf0edd12f892781351ffc69c2b734efe00feb3))
+
 ### [1.2.8](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.7...v1.2.8) (2024-04-20)
 
 ### [1.2.7](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.6...v1.2.7) (2024-01-20)
