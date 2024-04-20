@@ -34,7 +34,7 @@
     "build": "nuxt-module-build && yarn loc:build",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue . && remark . -q",
     "test": "nuxt test",
-    "prepack": "pinst --disable && nuxt-module-build",
+    "prepack": "pinst --disable && nuxt-module-build && yarn loc:build",
     "release": "standard-version",
     "dev": "nuxt dev playground",
     "dev:build": "nuxt build playground",
