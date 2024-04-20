@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url'
-import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, addVitePlugin, extendViteConfig, addPluginTemplate } from '@nuxt/kit'
+import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, addVitePlugin } from '@nuxt/kit'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import vitePlugin from './vitePlugin'
 
