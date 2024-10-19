@@ -54,7 +54,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@nuxt-themes/docus": "^1.15.0",
     "@nuxt/module-builder": "0.8.4",
     "@nuxt/test-utils": "3.11.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -66,12 +65,14 @@
     "jiti": "^2.3.3",
     "monaco-editor": "^0.52.0",
     "nuxt": "^3.13.2",
+    "nuxt-content-twoslash": "^0.1.1",
     "pinst": "^3.0.0",
     "playwright": "^1.48.1",
     "playwright-core": "^1.48.1",
     "remark-cli": "^12.0.1",
     "remark-lint": "^10.0.0",
     "remark-preset-lint-recommended": "^7.0.0",
+    "shadcn-docs-nuxt": "^0.6.4",
     "standard-version": "^9.5.0",
     "typescript": "^5.6.3",
     "vitest": "^2.1.3"

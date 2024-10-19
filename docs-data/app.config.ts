@@ -1,41 +1,42 @@
-const GITHUB_URL = 'https://github.com/e-chan1007/nuxt-monaco-editor'
-
 export default defineAppConfig({
   shadcnDocs: {
     site: {
-      url: 'https://e-chan1007.github.io/',
-      name: 'Nuxt Monaco Editor',
+      name: 'shadcn-docs-nuxt',
       description: 'The easiest way to get along with Monaco Editor.'
     },
     theme: {
-      customizable: false,
-      color: 'blue',
+      customizable: true,
+      color: 'zinc',
       radius: 0.5
     },
     header: {
-      title: 'Nuxt Monaco Editor',
+      title: 'shadcn-docs-starter',
       showTitle: true,
       darkModeToggle: true,
+      logo: {
+        light: '/logo.svg',
+        dark: '/logo-dark.svg'
+      },
       nav: [],
       links: [{
         icon: 'lucide:github',
-        to: GITHUB_URL,
+        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt',
         target: '_blank'
       }]
     },
     aside: {
-      useLevel: false,
+      useLevel: true,
       collapse: false
     },
     main: {
       breadCrumb: true,
-      showTitle: false
+      showTitle: true
     },
     footer: {
       credits: 'Copyright © 2024',
       links: [{
         icon: 'lucide:github',
-        to: GITHUB_URL,
+        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt',
         target: '_blank'
       }]
     },
@@ -45,14 +46,18 @@ export default defineAppConfig({
       links: [{
         title: 'Star on GitHub',
         icon: 'lucide:star',
-        to: GITHUB_URL,
+        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt',
         target: '_blank'
       }, {
         title: 'Create Issues',
         icon: 'lucide:circle-dot',
-        to: `${GITHUB_URL}/issues`,
+        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt/issues',
         target: '_blank'
       }]
+    },
+    search: {
+      enable: true,
+      inAside: false
     }
   }
 })

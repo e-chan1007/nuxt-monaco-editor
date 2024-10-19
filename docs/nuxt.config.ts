@@ -1,11 +1,18 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: '@nuxt-themes/docus',
-  app: {
-    head: {
-      meta: [{
-        name: 'google-site-verification', content: 'rzH-lFve_O6XXzhNiijEf4BZjsqeP_fGozFLwK1T-lQ'
-      }]
+  devtools: { enabled: true },
+  extends: ['shadcn-docs-nuxt'],
+  modules: ['nuxt-content-twoslash', '../src/module'],
+  compatibilityDate: '2024-07-06',
+  site: {
+    url: 'https://e-chan1007.github.io/',
+    name: 'Nuxt Monaco Editor',
+    description: 'The easiest way to get along with Monaco Editor.'
+  },
+  nitro: {
+    prerender: {
+      failOnError: false
     }
   },
-  modules: ['nuxt-monaco-editor']
+  twoslash: {}
 })
