@@ -35,6 +35,13 @@ export const localize2 = (data, message, ...args) => {
   }
 }
 
+export function getNLSMessages () {
+  return []
+}
+export function getNLSLanguage () {
+  return '__LOCALE__'
+}
+
 export function loadMessageBundle (file) {
   return localize
 }

@@ -13,7 +13,7 @@ const nlsPath = resolve('nls.mjs')
 
 const { resolve: resolveModule } = createRequire(import.meta.url)
 
-const plugin = (options: ModuleOptions, nuxtOptions: NuxtOptions): Plugin => ({
+const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plugin => ({
   name: 'vite-plugin-nuxt-monaco-editor',
   enforce: 'pre',
   resolveId (src) {
@@ -40,6 +40,8 @@ const plugin = (options: ModuleOptions, nuxtOptions: NuxtOptions): Plugin => ({
       if (/\/(vscode-)?nls\.m?js/.test(id)) {
         const code = (await fs.readFile(resolve('nls.mjs'), 'utf-8'))
           .replace('__LOCALE_DATA_PATH__', `nuxt-monaco-editor/dist/i18n/${options.locale}.json`)
+          .replace('__LOCALE__', options.locale)
+
         rewrittenMonacoFiles.set(id, code)
 
         return { code }
@@ -50,6 +52,7 @@ const plugin = (options: ModuleOptions, nuxtOptions: NuxtOptions): Plugin => ({
         let code = (await fs.readFile(id, 'utf-8'))
           .replace(/import \* as nls from '.+nls\.js(\?v=.+)?';/g, `import * as nls from '${nlsPath}';`)
           .replace(/(?<!function )localize\(/g, `localize('${path}', `)
+
         if (path === 'vs/base/common/platform') {
           // Workaround for not being able to paste in Monaco Editor
           code = code.replace('let _isWeb = false;', 'let _isWeb = true;')
