@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1-0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.3.0...v1.3.1-0) (2024-10-19)
+
+
+### Features
+
+* add `removeSourceMaps` option ([9c94fbb](https://github.com/e-chan1007/nuxt-monaco-editor/commit/9c94fbbf8d33ced7c89e2d3e739a11bc4a991d5c))
+
+
+### Bug Fixes
+
+* load `nls.js` insted of `nls.mjs` ([4b9d0a7](https://github.com/e-chan1007/nuxt-monaco-editor/commit/4b9d0a7f213f85c7fba1afbb6dbddeaf6a7fa9a4))
+
 ## [1.3.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.9...v1.3.0) (2024-10-19)
 
 
