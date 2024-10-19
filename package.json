@@ -32,7 +32,7 @@
   "scripts": {
     "postpack": "pinst --enable",
     "postinstall": "husky install && playwright install",
-    "build": "nuxt-module-build && yarn loc:build",
+    "build": "nuxt-module-build build && yarn loc:build",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue . && remark . -q",
     "test": "nuxt test",
     "prepack": "pinst --disable && nuxt-module-build build && yarn loc:build",
