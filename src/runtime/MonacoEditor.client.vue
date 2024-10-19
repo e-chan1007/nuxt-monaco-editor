@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type * as Monaco from 'monaco-editor'
+import * as Monaco from 'monaco-editor'
 import { computed, ref, shallowRef, watch, onBeforeUnmount } from 'vue'
 import { defu } from 'defu'
 import { useMonaco } from './composables'
@@ -20,6 +20,12 @@ interface Props {
      * Options passed to the second argument of `monaco.editor.create`
      */
     options?: Monaco.editor.IStandaloneEditorConstructionOptions;
+    /**
+     * The URI that identifies models
+     */
+    // eslint-disable-next-line vue/require-default-prop
+    modelUri?: Monaco.Uri;
+
     modelValue?: string;
 }
 
@@ -53,11 +59,11 @@ watch(() => props.modelValue, () => {
   }
 })
 
-watch(() => props.lang, () => {
+watch(() => [props.lang, props.modelUri], () => {
   if (model) {
     model.dispose()
   }
-  model = monaco.editor.createModel(props.modelValue, lang.value)
+  model = monaco.editor.createModel(props.modelValue, lang.value, props.modelUri)
   editor?.setModel(model)
 })
 
@@ -68,7 +74,7 @@ watch(() => props.options, () => {
 watch(editorElement, (newValue, oldValue) => {
   if (!editorElement.value || oldValue) { return }
   editor = monaco.editor.create(editorElement.value!, defu(props.options, defaultOptions))
-  model = monaco.editor.createModel(props.modelValue, lang.value)
+  model = monaco.editor.createModel(props.modelValue, lang.value, props.modelUri)
   editorRef.value = editor
   editor.layout()
   editor.setModel(model)

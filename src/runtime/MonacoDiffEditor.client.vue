@@ -20,6 +20,18 @@ interface Props {
    * Options passed to the second argument of `monaco.editor.createDiffEditor`
    */
   options?: Monaco.editor.IStandaloneDiffEditorConstructionOptions;
+  /**
+   * The URI that identifies models
+   */
+  // eslint-disable-next-line vue/require-default-prop
+  originalModelUri?: Monaco.Uri;
+
+  /**
+   * The URI that identifies models
+   */
+  // eslint-disable-next-line vue/require-default-prop
+  modelUri?: Monaco.Uri;
+
   original?: string;
   modelValue?: string;
 }
@@ -62,8 +74,8 @@ watch(() => props.lang, () => {
   const modifiedValue = modifiedModel?.getValue() || props.modelValue
   if (originalModel) { originalModel.dispose() }
   if (modifiedModel) { modifiedModel.dispose() }
-  originalModel = monaco.editor.createModel(originalValue, props.lang)
-  modifiedModel = monaco.editor.createModel(modifiedValue, props.lang)
+  originalModel = monaco.editor.createModel(originalValue, props.lang, props.originalModelUri)
+  modifiedModel = monaco.editor.createModel(modifiedValue, props.lang, props.modelUri)
   editor.setModel({
     original: originalModel,
     modified: modifiedModel
@@ -85,8 +97,8 @@ watch(editorElement, (newValue, oldValue) => {
   if (!editorElement.value || oldValue) { return }
   editor = monaco.editor.createDiffEditor(editorElement.value!, defu(props.options, defaultOptions))
   editorRef.value = editor
-  originalModel = monaco.editor.createModel(props.original, props.lang)
-  modifiedModel = monaco.editor.createModel(props.modelValue, props.lang)
+  originalModel = monaco.editor.createModel(props.original, props.lang, props.originalModelUri)
+  modifiedModel = monaco.editor.createModel(props.modelValue, props.lang, props.modelUri)
   editor.setModel({
     original: originalModel,
     modified: modifiedModel
