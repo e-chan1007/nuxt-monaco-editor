@@ -9,7 +9,7 @@ import type { ModuleOptions } from './module'
 const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 const { resolve } = createResolver(runtimeDir)
 const rewrittenMonacoFiles = new Map<string, string>()
-const nlsPath = resolve('nls.mjs')
+const nlsPath = resolve('nls.js')
 
 const { resolve: resolveModule } = createRequire(import.meta.url)
 
@@ -38,7 +38,7 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
         return { code: rewrittenMonacoFiles.get(id)! }
       }
       if (/\/(vscode-)?nls\.m?js/.test(id)) {
-        const code = (await fs.readFile(resolve('nls.mjs'), 'utf-8'))
+        const code = (await fs.readFile(nlsPath, 'utf-8'))
           .replace('__LOCALE_DATA_PATH__', `nuxt-monaco-editor/dist/i18n/${options.locale}.json`)
           .replace('__LOCALE__', options.locale)
 

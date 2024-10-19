@@ -2,11 +2,11 @@ export default defineNuxtConfig({
   css: ['~/styles.css'],
 
   modules: [
-    '../src/module'
+    '../dist/module'
   ],
 
   monacoEditor: {
-
+    locale: 'ja'
   },
 
   compatibilityDate: '2024-10-19'
