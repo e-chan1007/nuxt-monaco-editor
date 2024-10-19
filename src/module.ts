@@ -1,23 +1,28 @@
 import { fileURLToPath } from 'node:url'
 import { defineNuxtModule, addComponent, addPlugin, createResolver, addImports, addVitePlugin } from '@nuxt/kit'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+import type { Nuxt } from 'nuxt/schema'
 import vitePlugin from './vitePlugin'
 
 export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
 
 export interface ModuleOptions {
   locale?: MonacoEditorLocale,
+  removeSourceMaps?: boolean,
   componentName?: {
     codeEditor?: string,
     diffEditor?: string
   }
 }
 
-const DEFAULTS: ModuleOptions = {
-  locale: 'en',
-  componentName: {
-    codeEditor: 'MonacoEditor',
-    diffEditor: 'MonacoDiffEditor'
+const getDefaults = (nuxt: Nuxt): Required<ModuleOptions> => {
+  return {
+    locale: 'en',
+    removeSourceMaps: !nuxt.options.dev,
+    componentName: {
+      codeEditor: 'MonacoEditor',
+      diffEditor: 'MonacoDiffEditor'
+    }
   }
 }
 
@@ -27,7 +32,7 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'monacoEditor',
     compatibility: { nuxt: '>=3.1.0' }
   },
-  defaults: DEFAULTS,
+  defaults: getDefaults,
   setup (options, nuxt) {
     const isDev = nuxt.options.dev
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))

@@ -53,6 +53,10 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
           .replace(/import \* as nls from '.+nls\.js(\?v=.+)?';/g, `import * as nls from '${nlsPath}';`)
           .replace(/(?<!function )localize\(/g, `localize('${path}', `)
 
+        if (options.removeSourceMaps) {
+          code = code.replace(/\/\/# sourceMappingURL=.+\.js\.map/g, '')
+        }
+
         if (path === 'vs/base/common/platform') {
           // Workaround for not being able to paste in Monaco Editor
           code = code.replace('let _isWeb = false;', 'let _isWeb = true;')
@@ -64,10 +68,15 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
       return
     }
 
-    if (vsPath === 'vs/base/common/platform.js') {
-      // Workaround for not being able to paste in Monaco Editor
+    if (vsPath && id.endsWith('.js')) {
       let code = (await fs.readFile(id, 'utf-8'))
-      code = code.replace('let _isWeb = false;', 'let _isWeb = true;')
+      if (options.removeSourceMaps) {
+        code = code.replace(/\/\/# sourceMappingURL=.+\.js\.map/g, '')
+      }
+      if (vsPath === 'vs/base/common/platform.js') {
+        // Workaround for not being able to paste in Monaco Editor
+        code = code.replace('let _isWeb = false;', 'let _isWeb = true;')
+      }
       rewrittenMonacoFiles.set(id, code)
 
       return { code }
