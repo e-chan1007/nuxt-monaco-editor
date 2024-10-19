@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.9...v1.3.0) (2024-10-19)
+
+
+### Features
+
+* add `modelUri` option to components ([2786c92](https://github.com/e-chan1007/nuxt-monaco-editor/commit/2786c9253cea1474971125c060666396112f8c1f))
+
+
+### Bug Fixes
+
+* update to latest `@nuxt/module-builder` ([20f0327](https://github.com/e-chan1007/nuxt-monaco-editor/commit/20f032740e45c123796c8f976020379943ef5c89))
+
 ### [1.2.9](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.2.8...v1.2.9) (2024-04-20)
 
 
