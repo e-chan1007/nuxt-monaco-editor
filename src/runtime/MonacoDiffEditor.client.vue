@@ -5,7 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import type * as Monaco from 'monaco-editor'
+import { Uri } from 'monaco-editor/esm/vs/base/common/uri'
+import { ITextModel } from 'monaco-editor/esm/vs/editor/common/model'
+import { IStandaloneDiffEditor, IStandaloneDiffEditorConstructionOptions } from 'monaco-editor/esm/vs/editor/standalone/browser/standaloneEditor'
 import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 import { defu } from 'defu'
 import { useMonaco } from './composables'
@@ -19,18 +21,18 @@ interface Props {
   /**
    * Options passed to the second argument of `monaco.editor.createDiffEditor`
    */
-  options?: Monaco.editor.IStandaloneDiffEditorConstructionOptions;
+  options?: IStandaloneDiffEditorConstructionOptions;
   /**
    * The URI that identifies models
    */
   // eslint-disable-next-line vue/require-default-prop
-  originalModelUri?: Monaco.Uri;
+  originalModelUri?: Uri;
 
   /**
    * The URI that identifies models
    */
   // eslint-disable-next-line vue/require-default-prop
-  modelUri?: Monaco.Uri;
+  modelUri?: Uri;
 
   original?: string;
   modelValue?: string;
@@ -38,7 +40,7 @@ interface Props {
 
 interface Emits {
   (event: 'update:modelValue', value: string): void
-  (event: 'load', editor: Monaco.editor.IStandaloneDiffEditor): void
+  (event: 'load', editor: IStandaloneDiffEditor): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -53,12 +55,12 @@ const isLoading = ref(true)
 const editorElement = shallowRef<HTMLDivElement>()
 const monaco = useMonaco()!
 
-let editor: Monaco.editor.IStandaloneDiffEditor
-let originalModel: Monaco.editor.ITextModel
-let modifiedModel: Monaco.editor.ITextModel
+let editor: IStandaloneDiffEditor
+let originalModel: ITextModel
+let modifiedModel: ITextModel
 
-const editorRef = shallowRef<Monaco.editor.IStandaloneDiffEditor>()
-const defaultOptions: Monaco.editor.IStandaloneEditorConstructionOptions = {
+const editorRef = shallowRef<IStandaloneDiffEditor>()
+const defaultOptions: IStandaloneDiffEditorConstructionOptions = {
   automaticLayout: true
 }
 

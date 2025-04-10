@@ -5,7 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import * as Monaco from 'monaco-editor'
+import { Uri } from 'monaco-editor/esm/vs/base/common/uri'
+import { ITextModel } from 'monaco-editor/esm/vs/editor/common/model';
+import { IStandaloneEditorConstructionOptions } from 'monaco-editor/esm/vs/editor/standalone/browser/standaloneEditor'
 import { computed, ref, shallowRef, watch, onBeforeUnmount } from 'vue'
 import { defu } from 'defu'
 import { useMonaco } from './composables'
@@ -19,19 +21,19 @@ interface Props {
     /**
      * Options passed to the second argument of `monaco.editor.create`
      */
-    options?: Monaco.editor.IStandaloneEditorConstructionOptions;
+    options?: IStandaloneEditorConstructionOptions;
     /**
      * The URI that identifies models
      */
     // eslint-disable-next-line vue/require-default-prop
-    modelUri?: Monaco.Uri;
+    modelUri?: Uri;
 
     modelValue?: string;
 }
 
 interface Emits {
     (event: 'update:modelValue', value: string): void
-    (event: 'load', editor: Monaco.editor.IStandaloneCodeEditor): void
+    (event: 'load', editor: IStandaloneCodeEditor): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -43,15 +45,15 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<Emits>()
 const isLoading = ref(true)
 const lang = computed(() => props.lang || props.options.language)
-const editorRef = shallowRef<Monaco.editor.IStandaloneCodeEditor>()
+const editorRef = shallowRef<IStandaloneCodeEditor>()
 const editorElement = ref<HTMLDivElement>()
 const monaco = useMonaco()!
-const defaultOptions: Monaco.editor.IStandaloneEditorConstructionOptions = {
+const defaultOptions: IStandaloneEditorConstructionOptions = {
   automaticLayout: true
 }
 
-let editor: Monaco.editor.IStandaloneCodeEditor
-let model: Monaco.editor.ITextModel
+let editor: IStandaloneCodeEditor
+let model: ITextModel
 
 watch(() => props.modelValue, () => {
   if (editor?.getValue() !== props.modelValue) {
