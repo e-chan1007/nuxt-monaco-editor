@@ -1,8 +1,9 @@
+import NuxtMonacoEditor from "../dist/module.mjs";
 export default defineNuxtConfig({
   css: ['~/styles.css'],
 
   modules: [
-    '../dist/module'
+    NuxtMonacoEditor
   ],
 
   monacoEditor: {
