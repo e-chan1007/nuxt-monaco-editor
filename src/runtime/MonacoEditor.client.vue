@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import * as Monaco from 'monaco-editor'
+import type * as Monaco from 'monaco-editor'
 import { computed, ref, shallowRef, watch, onBeforeUnmount } from 'vue'
 import { defu } from 'defu'
 import { useMonaco } from './composables'

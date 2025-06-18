@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import localeData from '__LOCALE_DATA_PATH__'
 
 export function _format (message, args) {
