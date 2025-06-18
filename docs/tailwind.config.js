@@ -1,9 +1,8 @@
-import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
 
+/** @type { import("tailwindcss").Config } */
 export default {
   darkMode: 'selector',
-  safelist: ['dark', 'twoslash-popup-docs'],
   prefix: '',
   content: [],
   theme: {
@@ -84,4 +83,4 @@ export default {
   },
 
   plugins: [animate]
-} satisfies Config
+}

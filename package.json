@@ -79,6 +79,9 @@
   "peerDependencies": {
     "monaco-editor": "*"
   },
+  "resolutions": {
+    "@unhead/vue": "^2"
+  },
   "remarkConfig": {
     "plugins": [
       "remark-preset-lint-recommended",
