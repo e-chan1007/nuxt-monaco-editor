@@ -17,7 +17,7 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
   name: 'vite-plugin-nuxt-monaco-editor',
   enforce: 'pre',
   resolveId (src) {
-    if (src.includes('monaco-editor/esm/vs/') && src.endsWith('.js?worker')) {
+    if (/monaco-editor\/esm\/vs\/.*\.worker\.js/.test(src)) {
       return resolveModule(src
         .replace('?worker', '')
         .replace('__skip_vite', '')
