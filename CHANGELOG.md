@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0-alpha.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.3.2...v1.4.0-alpha.0) (2025-08-13)
+
+
+### Features
+
+* load dependencies when using component ([162555e](https://github.com/e-chan1007/nuxt-monaco-editor/commit/162555ec2bdbd7b7a6412ef66f08f8dcbba6bde7))
+
 ### [1.3.2](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.3.1...v1.3.2) (2025-06-18)
 
 
