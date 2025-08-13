@@ -33,7 +33,7 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-monaco-editor',
     configKey: 'monacoEditor',
-    compatibility: { nuxt: '>=3.1.0 ^4' }
+    compatibility: { nuxt: '>=3.1.0 || ^4' }
   },
   defaults: getDefaults,
   setup (options, nuxt) {
