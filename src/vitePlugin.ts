@@ -29,7 +29,7 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
     }
   },
   async load (id) {
-    id = id.split('?')[0]
+    id = id.split('?')[0] as string
 
     const vsPath = id.includes('monaco-editor/esm') ? id.split('monaco-editor/esm/').pop() : null
 
@@ -47,7 +47,7 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
         return { code }
       }
 
-      if (vsPath && id.endsWith('.js')) {
+      if (vsPath?.endsWith('.js')) {
         const path = vsPath.replace(/\.js$/, '')
         let code = (await fs.readFile(id, 'utf-8'))
           .replace(/import \* as nls from '.+nls\.js(\?v=.+)?';/g, `import * as nls from '${nlsPath}';`)
@@ -68,7 +68,7 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
       return
     }
 
-    if (vsPath && id.endsWith('.js')) {
+    if (vsPath?.endsWith('.js')) {
       let code = (await fs.readFile(id, 'utf-8'))
       if (options.removeSourceMaps) {
         code = code.replace(/\/\/# sourceMappingURL=.+\.js\.map/g, '')

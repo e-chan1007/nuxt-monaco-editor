@@ -45,11 +45,18 @@ const isLoading = ref(true)
 const lang = computed(() => props.lang || props.options.language)
 const editorRef = shallowRef<Monaco.editor.IStandaloneCodeEditor>()
 const editorElement = ref<HTMLDivElement>()
-const monaco = useMonaco()!
 const defaultOptions: Monaco.editor.IStandaloneEditorConstructionOptions = {
   automaticLayout: true
 }
 
+defineExpose({
+  /**
+     * Monaco editor instance
+     */
+  $editor: editorRef
+})
+
+const monaco = await useMonaco();
 let editor: Monaco.editor.IStandaloneCodeEditor
 let model: Monaco.editor.ITextModel
 
@@ -83,13 +90,6 @@ watch(editorElement, (newValue, oldValue) => {
   })
   isLoading.value = false
   emit('load', editor)
-})
-
-defineExpose({
-  /**
-     * Monaco editor instance
-     */
-  $editor: editorRef
 })
 
 onBeforeUnmount(() => {

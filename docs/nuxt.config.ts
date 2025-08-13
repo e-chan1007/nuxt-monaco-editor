@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ["shadcn-docs-nuxt"],
-  modules: ["nuxt-content-twoslash", "../src/module"],
+  modules: ["../src/module"],
   compatibilityDate: "2024-07-06",
   site: {
     url: "https://e-chan1007.github.io/",

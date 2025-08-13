@@ -1,0 +1,12 @@
+diff --git a/nuxt.config.ts b/nuxt.config.ts
+index 27528888789a4bcca7b4c9f8703f8b27a5d831df..eefaf00e3e741ec11c43211552d0dbe0da1a1487 100644
+--- a/nuxt.config.ts
++++ b/nuxt.config.ts
+@@ -9,6 +9,7 @@ export default defineNuxtConfig({
+   modules: [
+     'shadcn-nuxt',
+     '@vueuse/nuxt',
++    'nuxt-content-twoslash',
+     '@ztl-uwu/nuxt-content',
+     '@nuxt/image',
+     '@nuxt/icon',
