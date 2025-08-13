@@ -51,16 +51,23 @@ const emit = defineEmits<Emits>()
 const isLoading = ref(true)
 
 const editorElement = shallowRef<HTMLDivElement>()
-const monaco = useMonaco()!
-
-let editor: Monaco.editor.IStandaloneDiffEditor
-let originalModel: Monaco.editor.ITextModel
-let modifiedModel: Monaco.editor.ITextModel
-
 const editorRef = shallowRef<Monaco.editor.IStandaloneDiffEditor>()
 const defaultOptions: Monaco.editor.IStandaloneEditorConstructionOptions = {
   automaticLayout: true
 }
+
+defineExpose({
+  /**
+   * Monaco editor instance
+   */
+  $editor: editorRef
+})
+
+const monaco = await useMonaco();
+
+let editor: Monaco.editor.IStandaloneDiffEditor
+let originalModel: Monaco.editor.ITextModel
+let modifiedModel: Monaco.editor.ITextModel
 
 watch(() => [props.original, props.modelValue], () => {
   if (originalModel.getValue() !== props.original || modifiedModel.getValue() !== props.modelValue) {
@@ -84,13 +91,6 @@ watch(() => props.lang, () => {
 
 watch(() => props.options, () => {
   editor?.updateOptions(defu(props.options, defaultOptions))
-})
-
-defineExpose({
-  /**
-   * Monaco editor instance
-   */
-  $editor: editorRef
 })
 
 watch(editorElement, (newValue, oldValue) => {

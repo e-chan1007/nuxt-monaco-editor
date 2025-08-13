@@ -45,36 +45,38 @@
     "loc:build": "jiti scripts/build-loc.ts"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.17.5",
+    "@nuxt/kit": "^4.0.3",
     "defu": "^6.1.4",
-    "vite-plugin-static-copy": "^3.0.2"
+    "vite-plugin-static-copy": "^3.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@nuxt/eslint-config": "^1.4.1",
-    "@nuxt/module-builder": "1.0.1",
-    "@nuxt/test-utils": "3.19.1",
+    "@nuxt/content": "^3.6.3",
+    "@nuxt/eslint-config": "^1.8.0",
+    "@nuxt/module-builder": "1.0.2",
+    "@nuxt/test-utils": "3.19.2",
     "@vue/test-utils": "^2.4.6",
-    "eslint": "^9.29.0",
+    "better-sqlite3": "^12.2.0",
+    "eslint": "^9.33.0",
     "execa": "^9.6.0",
     "happy-dom": "^18.0.1",
     "husky": "^9.1.7",
-    "jiti": "^2.4.2",
+    "jiti": "^2.5.1",
     "monaco-editor": "^0.52.2",
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.0.3",
     "nuxt-content-twoslash": "^0.1.2",
     "pinst": "^3.0.0",
-    "playwright": "^1.53.0",
-    "playwright-core": "^1.53.0",
+    "playwright": "^1.54.2",
+    "playwright-core": "^1.54.2",
     "remark-cli": "^12.0.1",
     "remark-lint": "^10.0.1",
     "remark-preset-lint-recommended": "^7.0.1",
-    "shadcn-docs-nuxt": "^1.0.3",
+    "shadcn-docs-nuxt": "patch:shadcn-docs-nuxt@npm%3A1.1.2#~/.yarn/patches/shadcn-docs-nuxt-npm-1.1.2-b9d2f65cf2.patch",
     "standard-version": "^9.5.0",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4",
-    "vue-tsc": "^2.2.10"
+    "vue-tsc": "^3.0.5"
   },
   "peerDependencies": {
     "monaco-editor": "*"
