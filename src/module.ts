@@ -4,11 +4,13 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 import type { Nuxt } from 'nuxt/schema'
 import vitePlugin from './vitePlugin'
 import { createRequire } from 'node:module'
+import defu from 'defu'
 
 export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
 
 export interface ModuleOptions {
   locale?: MonacoEditorLocale,
+  optimizeMonacoDeps?: boolean,
   removeSourceMaps?: boolean,
   componentName?: {
     codeEditor?: string,
@@ -19,6 +21,7 @@ export interface ModuleOptions {
 const getDefaults = (nuxt: Nuxt): Required<ModuleOptions> => {
   return {
     locale: 'en',
+    optimizeMonacoDeps: true,
     removeSourceMaps: !nuxt.options.dev,
     componentName: {
       codeEditor: 'MonacoEditor',
@@ -42,6 +45,15 @@ export default defineNuxtModule<ModuleOptions>({
 
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false);
+
+    extendViteConfig(config => {
+      config.optimizeDeps = defu(
+        options.optimizeMonacoDeps ? {
+        include: ['monaco-editor']
+      } : {
+        exclude: ["monaco-editor"]
+      },  config.optimizeDeps)
+    })
 
     addVitePlugin(vitePlugin(options as Required<ModuleOptions>, nuxt.options))
 
