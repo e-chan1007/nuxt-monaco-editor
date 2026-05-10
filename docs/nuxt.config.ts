@@ -3,16 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ["shadcn-docs-nuxt"],
   modules: ["../src/module"],
-  compatibilityDate: "2024-07-06",
+  compatibilityDate: "2026-05-09",
   site: {
     url: "https://e-chan1007.github.io/",
     name: "Nuxt Monaco Editor",
     description: "The easiest way to get along with Monaco Editor.",
-  },
-  nitro: {
-    prerender: {
-      failOnError: false,
-    },
   },
   i18n: {
     defaultLocale: "en",
@@ -28,6 +23,14 @@ export default defineNuxtConfig({
         language: "ja-JP",
       },
     ],
+  },
+  content: {
+    highlight: {
+      langs: ["bash", "ts", "vue"],
+    },
+  },
+  ogImage: {
+    zeroRuntime: true,
   },
   twoslash: {
     handbookOptions: {

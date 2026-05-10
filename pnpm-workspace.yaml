@@ -1,0 +1,14 @@
+packages:
+  - '.'
+  - 'playground'
+  - 'docs'
+allowBuilds:
+  '@parcel/watcher': false
+  better-sqlite3: false
+  esbuild: false
+  lefthook: true
+  sharp: false
+  unrs-resolver: false
+  vue-demi: false
+patchedDependencies:
+  shadcn-docs-nuxt: patches/shadcn-docs-nuxt.patch

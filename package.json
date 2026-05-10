@@ -1,6 +1,6 @@
 {
   "name": "nuxt-monaco-editor",
-  "description": "Integrate monaco-editor with Nuxt (3)",
+  "description": "Integrate monaco-editor with Nuxt",
   "keywords": [
     "monaco-editor",
     "nuxt"
@@ -29,54 +29,45 @@
   ],
   "scripts": {
     "postpack": "pinst --enable",
-    "postinstall": "husky install && playwright install",
-    "build": "nuxt-module-build build && yarn loc:build",
+    "build": "nuxt-module-build build && pnpm loc:build",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue . && remark . -q",
     "test": "nuxt test",
-    "prepack": "pinst --disable && nuxt-module-build build && yarn loc:build",
+    "prepack": "pinst --disable && nuxt-module-build build && pnpm loc:build",
     "release": "standard-version",
     "dev": "nuxt dev playground",
     "dev:build": "nuxt build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt prepare playground && yarn loc:build",
-    "docs:dev": "nuxt dev docs",
-    "docs:generate": "nuxt generate docs",
-    "docs:prepare": "nuxt prepare docs",
-    "docs:preview": "nuxt preview docs",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt prepare playground && pnpm loc:build",
+    "docs:dev": "pnpm --filter nuxt-monaco-editor-docs dev",
+    "docs:generate": "pnpm --filter nuxt-monaco-editor-docs generate",
+    "docs:prepare": "pnpm --filter nuxt-monaco-editor-docs prepare",
+    "docs:preview": "pnpm --filter nuxt-monaco-editor-docs preview",
     "loc:build": "jiti scripts/build-loc.ts"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.0.3",
+    "@nuxt/kit": "^4.4.4",
     "defu": "^6.1.4",
-    "vite-plugin-static-copy": "^3.1.1"
+    "vite-plugin-static-copy": "^4.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@nuxt/content": "^3.6.3",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
     "@nuxt/eslint-config": "^1.8.0",
     "@nuxt/module-builder": "1.0.2",
-    "@nuxt/test-utils": "3.19.2",
-    "@vue/test-utils": "^2.4.6",
-    "better-sqlite3": "^12.2.0",
-    "eslint": "^9.33.0",
-    "execa": "^9.6.0",
-    "happy-dom": "^18.0.1",
-    "husky": "^9.1.7",
-    "jiti": "^2.5.1",
-    "monaco-editor": "^0.52.2",
-    "nuxt": "^4.0.3",
-    "nuxt-content-twoslash": "^0.1.2",
+    "@nuxt/test-utils": "4.0.3",
+    "eslint": "^10.3.0",
+    "jiti": "^2.7.0",
+    "lefthook": "^2.1.6",
+    "monaco-editor": "^0.55.1",
+    "nuxt": "^4.4.4",
     "pinst": "^3.0.0",
-    "playwright": "^1.54.2",
     "playwright-core": "^1.54.2",
     "remark-cli": "^12.0.1",
     "remark-lint": "^10.0.1",
     "remark-preset-lint-recommended": "^7.0.1",
-    "shadcn-docs-nuxt": "patch:shadcn-docs-nuxt@npm%3A1.1.2#~/.yarn/patches/shadcn-docs-nuxt-npm-1.1.2-b9d2f65cf2.patch",
     "standard-version": "^9.5.0",
-    "typescript": "^5.9.2",
-    "vitest": "^3.2.4",
-    "vue-tsc": "^3.0.5"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5",
+    "vue-tsc": "^3.2.8"
   },
   "peerDependencies": {
     "monaco-editor": "*"
@@ -93,8 +84,5 @@
       ]
     ]
   },
-  "workspaces": [
-    "playground"
-  ],
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "pnpm@10.32.1"
 }

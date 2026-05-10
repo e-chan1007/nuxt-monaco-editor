@@ -1,0 +1,8 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - run: pnpm lint
+
+commit-msg:
+  jobs:
+    - run: pnpm commitlint --edit "$1"

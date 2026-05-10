@@ -13,7 +13,7 @@ npx nuxi@latest module add nuxt-monaco-editor
 Don't forget to install `monaco-editor`.
 
 ## Setup
-1. Add this module to the Nuxt config 
+1. Add this module to the Nuxt config
 
 ```ts
 export default defineNuxtConfig({
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 })
 ```
 
-2. (Optional) Configure the module 
+2. (Optional) Configure the module
 
 ```ts
 export default defineNuxtConfig({
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 })
 ```
 
-3. Use the component in your pages or components 
+3. Use the component in your pages or components
 
 ```vue
 <template>
@@ -52,5 +52,5 @@ const value = ref('')
 
 ## Development
 
-- Run `npm run dev:prepare` to generate type stubs.  
-- Use `npm run dev` to start [playground](./playground) in development mode.  
+- Run `pnpm dev:prepare` to generate type stubs.
+- Use `pnpm dev` to start [playground](./playground) in development mode.

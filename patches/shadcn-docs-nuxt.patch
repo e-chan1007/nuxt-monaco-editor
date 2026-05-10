@@ -1,5 +1,5 @@
 diff --git a/nuxt.config.ts b/nuxt.config.ts
-index 27528888789a4bcca7b4c9f8703f8b27a5d831df..eefaf00e3e741ec11c43211552d0dbe0da1a1487 100644
+index ce57c5f04d6d05da44dfa668b3fd4f0bff82f373..b0fcd3bf6add90a8183df2a9cf7f3b4f415beae4 100644
 --- a/nuxt.config.ts
 +++ b/nuxt.config.ts
 @@ -9,6 +9,7 @@ export default defineNuxtConfig({
