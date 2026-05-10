@@ -42,6 +42,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
+      - name: Prepare playwright
+        run: pnpm exec playwright-core install --with-deps
       - name: Prepare Nuxt
         run: pnpm dev:prepare
       - name: Test
