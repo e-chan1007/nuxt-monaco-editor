@@ -57,7 +57,7 @@
     "eslint": "^10.3.0",
     "jiti": "^2.7.0",
     "lefthook": "^2.1.6",
-    "monaco-editor": "^0.55.1",
+    "monaco-editor": "^0.56.0",
     "nuxt": "^4.4.4",
     "pinst": "^3.0.0",
     "playwright-core": "^1.54.2",
