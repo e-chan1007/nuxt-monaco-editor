@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1-alpha.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.1-alpha.0...v1.4.1-alpha.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* update monaco-editor to version 0.56.0 and fix broken paths ([0d5d324](https://github.com/e-chan1007/nuxt-monaco-editor/commit/0d5d3244ee08e767ebe520b3adf7b9f2b9fa8654))
+
 ## [1.4.1-alpha.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.0...v1.4.1-alpha.0) (2026-05-10)
 
 ## [1.4.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.0-alpha.2...v1.4.0) (2025-08-13)
