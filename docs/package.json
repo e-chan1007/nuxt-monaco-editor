@@ -9,10 +9,8 @@
     "preview": "nuxt preview ."
   },
   "devDependencies": {
-    "@nuxt/content": "^3.6.3",
-    "better-sqlite3": "^12.2.0",
     "nuxt-content-twoslash": "0.2.1",
-    "shadcn-docs-nuxt": "^1.1.2",
+    "shadcn-docs-nuxt": "^1.2.2",
     "tailwindcss-animate": "^1.0.7"
   }
 }

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ["shadcn-docs-nuxt"],
   modules: ["../src/module"],
-  compatibilityDate: "2026-05-09",
+  compatibilityDate: "2026-07-23",
   site: {
     url: "https://e-chan1007.github.io/",
     name: "Nuxt Monaco Editor",

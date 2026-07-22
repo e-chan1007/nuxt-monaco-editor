@@ -57,3 +57,6 @@ const value = ref("");
 - Run `git submodule update --init --recursive`.
 - Run `pnpm dev:prepare` to generate type stubs.
 - Use `pnpm dev` to start [playground](./playground) in development mode.
+- Run `pnpm exec playwright-core install --with-deps` to install dependencies for testing.
+- Run `pnpm test` to run tests.
+- Run `pnpm lint` to run linting.
