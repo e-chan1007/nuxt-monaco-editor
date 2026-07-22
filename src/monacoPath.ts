@@ -13,7 +13,7 @@ export function getMonacoEditorRoot (): string {
   const entry = require.resolve('monaco-editor')
   let dir = dirname(entry)
 
-  for (let i = 0; i < 10; i++) {
+  while (dir !== dirname(dir)) {
     const pkgPath = join(dir, 'package.json')
     if (existsSync(pkgPath)) {
       try {
@@ -25,11 +25,7 @@ export function getMonacoEditorRoot (): string {
         // continue walking
       }
     }
-    const parent = dirname(dir)
-    if (parent === dir) {
-      break
-    }
-    dir = parent
+    dir = dirname(dir)
   }
 
   throw new Error(`Could not locate monaco-editor package root from ${entry}`)
