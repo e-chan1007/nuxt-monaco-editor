@@ -3,7 +3,7 @@ import { defineNuxtModule, addComponent, createResolver, addImports, addVitePlug
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import type { Nuxt } from 'nuxt/schema'
 import vitePlugin from './vitePlugin'
-import { createRequire } from 'node:module'
+import { resolveMonacoPath } from './monacoPath'
 import defu from 'defu'
 
 export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
@@ -29,8 +29,6 @@ const getDefaults = (nuxt: Nuxt): Required<ModuleOptions> => {
     }
   }
 }
-
-const require = createRequire(import.meta.url)
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -59,8 +57,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     addVitePlugin(viteStaticCopy({
       targets: [{
-        src: require
-          .resolve('monaco-editor/esm/metadata.js')
+        src: resolveMonacoPath('esm', 'metadata.js')
           .replace(/\\/g, '/')
           .replace(/\/metadata.js$/, '/*'),
         dest: '_nuxt/nuxt-monaco-editor'

@@ -1,4 +1,4 @@
-import type Monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import type * as Monaco from 'monaco-editor'
 
 let monacoPromise: Promise<typeof Monaco> | null = null
 
