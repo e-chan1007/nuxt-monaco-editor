@@ -1,11 +1,12 @@
 import { fileURLToPath } from 'node:url'
 import fs from 'fs/promises'
+import { existsSync } from 'node:fs'
 import { createResolver } from '@nuxt/kit'
 import type { Plugin } from 'vite'
 import type { NuxtOptions } from 'nuxt/schema'
 import type { ModuleOptions } from './module'
 import { getMonacoEditorRoot } from './monacoPath'
-import { join } from 'node:path'
+import { isAbsolute, join } from 'node:path'
 
 const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 const { resolve } = createResolver(runtimeDir)
@@ -17,6 +18,12 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
   enforce: 'pre',
   resolveId (src) {
     if (/monaco-editor\/esm\/vs\/.*\.worker\.js/.test(src)) {
+      // monaco >=0.56 loads its own workers via `new URL(..., import.meta.url)`,
+      // so these ids arrive already resolved; rewriting them breaks under pnpm (#73).
+      // Tested against disk, not shape, so baseURL-prefixed ids still rewrite.
+      const resolved = (src.startsWith('/@fs/') ? src.slice(4) : src).split('?')[0] as string
+      if (isAbsolute(resolved) && existsSync(resolved)) { return }
+
       const cleaned = src
         .replace('?worker', '')
         .replace('__skip_vite', '')
