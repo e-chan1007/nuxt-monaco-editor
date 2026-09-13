@@ -1,36 +1,10 @@
-import { createRequire } from 'node:module'
-import { dirname, join } from 'node:path'
-import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { existsSync } from 'node:fs'
 
-const require = createRequire(import.meta.url)
-
-/**
- * Locate the monaco-editor package root on disk.
- * Deep paths like `monaco-editor/esm/...` break under 0.56+ package exports
- * (which remap `./*` → `./esm/vs/*`), so resolve via the package entry instead.
- */
-export function getMonacoEditorRoot (): string {
-  const entry = require.resolve('monaco-editor')
-  let dir = dirname(entry)
-
-  while (dir !== dirname(dir)) {
-    const pkgPath = join(dir, 'package.json')
-    if (existsSync(pkgPath)) {
-      try {
-        const pkg = JSON.parse(readFileSync(pkgPath, 'utf8')) as { name?: string }
-        if (pkg.name === 'monaco-editor') {
-          return dir
-        }
-      } catch {
-        // continue walking
-      }
-    }
-    dir = dirname(dir)
+export function getMonacoEditorRoot (modulesDirs: string[]): string {
+  for (const dir of modulesDirs) {
+    const candidate = join(dir, 'monaco-editor')
+    if (existsSync(candidate)) return candidate
   }
-
-  throw new Error(`Could not locate monaco-editor package root from ${entry}`)
-}
-
-export function resolveMonacoPath (...segments: string[]): string {
-  return join(getMonacoEditorRoot(), ...segments)
+  throw new Error(`Could not locate monaco-editor in: ${modulesDirs.join(', ')}`)
 }

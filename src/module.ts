@@ -1,9 +1,10 @@
 import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 import { defineNuxtModule, addComponent, createResolver, addImports, addVitePlugin, extendViteConfig } from '@nuxt/kit'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import type { Nuxt } from 'nuxt/schema'
 import vitePlugin from './vitePlugin'
-import { resolveMonacoPath } from './monacoPath'
+import { getMonacoEditorRoot } from './monacoPath'
 import defu from 'defu'
 
 export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
@@ -55,18 +56,18 @@ export default defineNuxtModule<ModuleOptions>({
 
     addVitePlugin(vitePlugin(options as Required<ModuleOptions>, nuxt.options))
 
+    const monacoVs = join(getMonacoEditorRoot(nuxt.options.modulesDir), 'esm').replace(/\\/g, '/')
     addVitePlugin(viteStaticCopy({
       targets: [{
-        src: resolveMonacoPath('esm', 'metadata.js')
-          .replace(/\\/g, '/')
-          .replace(/\/metadata.js$/, '/*'),
-        dest: '_nuxt/nuxt-monaco-editor'
+        src: `${monacoVs}/**`,
+        dest: '_nuxt/nuxt-monaco-editor',
+        rename: { stripBase: 3 }
       }]
     }))
 
     nuxt.hook('build:manifest', (manifest) => {
       Object.entries(manifest).forEach(([key, entry]) => {
-        if (key.includes('node_modules/monaco-editor/esm/vs')) { entry.isEntry = false }
+        if (key.includes('node_modules/monaco-editor/esm')) { entry.isEntry = false }
       })
     })
 

@@ -1,42 +1,41 @@
-import { fileURLToPath } from 'node:url'
+import { createResolver } from '@nuxt/kit'
 import fs from 'fs/promises'
 import { existsSync } from 'node:fs'
-import { createResolver } from '@nuxt/kit'
-import type { Plugin } from 'vite'
+import { isAbsolute, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { NuxtOptions } from 'nuxt/schema'
+import type { Plugin } from 'vite'
 import type { ModuleOptions } from './module'
 import { getMonacoEditorRoot } from './monacoPath'
-import { isAbsolute, join } from 'node:path'
 
 const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 const { resolve } = createResolver(runtimeDir)
 const rewrittenMonacoFiles = new Map<string, string>()
 const nlsPath = resolve('nls.js')
 
-const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plugin => ({
-  name: 'vite-plugin-nuxt-monaco-editor',
-  enforce: 'pre',
-  resolveId (src) {
-    if (/monaco-editor\/esm\/vs\/.*\.worker\.js/.test(src)) {
-      // monaco >=0.56 loads its own workers via `new URL(..., import.meta.url)`,
-      // so these ids arrive already resolved; rewriting them breaks under pnpm (#73).
-      // Tested against disk, not shape, so baseURL-prefixed ids still rewrite.
-      const resolved = (src.startsWith('/@fs/') ? src.slice(4) : src).split('?')[0] as string
-      if (isAbsolute(resolved) && existsSync(resolved)) { return }
+const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plugin => {
+  const monacoRoot = getMonacoEditorRoot(nuxtOptions.modulesDir)
+  return {
+    name: 'vite-plugin-nuxt-monaco-editor',
+    enforce: 'pre',
+    resolveId (src) {
+      if (/monaco-editor\/esm\/vs\/.*\.worker\.js/.test(src)) {
+        const resolved = (src.startsWith('/@fs/') ? src.slice(4) : src).split('?')[0] as string
+        if (isAbsolute(resolved) && existsSync(resolved)) { return }
 
-      const cleaned = src
-        .replace('?worker', '')
-        .replace('__skip_vite', '')
-        .replace('node_modules', '')
-        .replace(nuxtOptions.app.baseURL, '/')
-        .replace(/\/\/+/g, '/')
-        .replace(/^\//, '')
-      // Avoid Node exports remapping (0.56+): resolve from package root on disk
-      const relative = cleaned.replace(/^monaco-editor\//, '')
-      return join(getMonacoEditorRoot(), relative)
-    }
-  },
-  async load (id) {
+        const cleaned = src
+          .replace('?worker', '')
+          .replace('__skip_vite', '')
+          .replace('node_modules', '')
+          .replace(nuxtOptions.app.baseURL, '/')
+          .replace(/\/\/+/g, '/')
+          .replace(/^\//, '')
+        // Avoid Node exports remapping (0.56+): resolve from package root on disk
+        const relative = cleaned.replace(/^monaco-editor\//, '')
+        return join(monacoRoot, relative)
+      }
+    },
+    async load (id) {
     id = id.split('?')[0] as string
 
     const vsPath = id.includes('monaco-editor/esm') ? id.split('monaco-editor/esm/').pop() : null
@@ -90,6 +89,7 @@ const plugin = (options: Required<ModuleOptions>, nuxtOptions: NuxtOptions): Plu
       return { code }
     }
   }
-})
+  }
+}
 
 export default plugin
