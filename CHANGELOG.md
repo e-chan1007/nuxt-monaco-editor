@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.1...v1.4.2) (2026-09-13)
+
+
+### Bug Fixes
+
+* copy the whole monaco-editor esm tree so workers resolved ([a51c53c](https://github.com/e-chan1007/nuxt-monaco-editor/commit/a51c53c2dc237136d5ae5cbedbdead004aa88786))
+* **vite-plugin:** let monaco resolve its own worker URLs ([5743c38](https://github.com/e-chan1007/nuxt-monaco-editor/commit/5743c38b99e7ab4156d21b30985c20d81f41e8d2)), closes [#73](https://github.com/e-chan1007/nuxt-monaco-editor/issues/73)
+
 ### [1.4.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.1-alpha.1...v1.4.1) (2026-07-22)
 
 ### [1.4.1-alpha.1](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.1-alpha.0...v1.4.1-alpha.1) (2026-07-22)
