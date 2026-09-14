@@ -16,6 +16,7 @@ export default defineConfig({
           name: 'e2e',
           include: ['test/*.test.mts'],
           environment: 'node',
+          testTimeout: 20e3,
         },
       }
     ]

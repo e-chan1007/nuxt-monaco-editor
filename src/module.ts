@@ -1,29 +1,26 @@
 import { fileURLToPath } from 'node:url'
-import { join } from 'node:path'
-import { defineNuxtModule, addComponent, createResolver, addImports, addVitePlugin, extendViteConfig } from '@nuxt/kit'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
-import type { Nuxt } from 'nuxt/schema'
-import vitePlugin from './vitePlugin'
-import { getMonacoEditorRoot } from './monacoPath'
-import defu from 'defu'
+import { defineNuxtModule, addComponent, createResolver, addImports } from '@nuxt/kit'
+import type { MonacoEditorLocale } from './runtime/locales'
 
-export type MonacoEditorLocale = 'cs' | 'de' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'pl' | 'pt-br' | 'qps-ploc' | 'ru' | 'tr' | 'zh-hans' | 'zh-hant' | 'en';
+export type { MonacoEditorLocale }
 
 export interface ModuleOptions {
   locale?: MonacoEditorLocale,
-  optimizeMonacoDeps?: boolean,
-  removeSourceMaps?: boolean,
   componentName?: {
     codeEditor?: string,
     diffEditor?: string
   }
 }
 
-const getDefaults = (nuxt: Nuxt): Required<ModuleOptions> => {
+declare module 'nuxt/schema' {
+  interface PublicRuntimeConfig {
+    monacoEditor: { locale: MonacoEditorLocale }
+  }
+}
+
+const getDefaults = (): Required<ModuleOptions> => {
   return {
     locale: 'en',
-    optimizeMonacoDeps: true,
-    removeSourceMaps: !nuxt.options.dev,
     componentName: {
       codeEditor: 'MonacoEditor',
       diffEditor: 'MonacoDiffEditor'
@@ -45,31 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(runtimeDir)
     nuxt.options.build.transpile.push(({ isClient }) => isClient ? 'monaco-editor' : false);
 
-    extendViteConfig(config => {
-      config.optimizeDeps = defu(
-        options.optimizeMonacoDeps ? {
-        include: ['monaco-editor']
-      } : {
-        exclude: ["monaco-editor"]
-      },  config.optimizeDeps)
-    })
-
-    addVitePlugin(vitePlugin(options as Required<ModuleOptions>, nuxt.options))
-
-    const monacoVs = join(getMonacoEditorRoot(nuxt.options.modulesDir), 'esm').replace(/\\/g, '/')
-    addVitePlugin(viteStaticCopy({
-      targets: [{
-        src: `${monacoVs}/**`,
-        dest: '_nuxt/nuxt-monaco-editor',
-        rename: { stripBase: 3 }
-      }]
-    }))
-
-    nuxt.hook('build:manifest', (manifest) => {
-      Object.entries(manifest).forEach(([key, entry]) => {
-        if (key.includes('node_modules/monaco-editor/esm')) { entry.isEntry = false }
-      })
-    })
+    nuxt.options.runtimeConfig.public.monacoEditor = { locale: options.locale! }
 
     addComponent({ name: options.componentName!.codeEditor!, filePath: resolve('MonacoEditor.client.vue') })
     addComponent({ name: options.componentName!.diffEditor!, filePath: resolve('MonacoDiffEditor.client.vue') })

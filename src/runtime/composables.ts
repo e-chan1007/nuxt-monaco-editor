@@ -1,38 +1,51 @@
+import { defu } from 'defu'
+import { useRuntimeConfig } from '#imports'
+import EditorWorker from 'monaco-editor/editor/editor.worker.js?worker'
+import HtmlWorker from 'monaco-editor/languages/features/html/html.worker.js?worker'
+import CssWorker from 'monaco-editor/languages/features/css/css.worker.js?worker'
+import JsonWorker from 'monaco-editor/languages/features/json/json.worker.js?worker'
+import TsWorker from 'monaco-editor/languages/features/typescript/ts.worker.js?worker'
+import { nls } from './locales'
+import type { MonacoEditorLocale } from './locales'
 import type * as Monaco from 'monaco-editor'
 
 let monacoPromise: Promise<typeof Monaco> | null = null
 
-export function useMonaco() {
+async function loadMonaco (): Promise<typeof Monaco> {
+  const { locale } = useRuntimeConfig().public.monacoEditor as { locale: MonacoEditorLocale }
+  if (locale !== 'en') await nls[locale]()
+
+  const getWorker = (_id: string, label: string): Worker => {
+    switch (label) {
+      case 'json':
+        return new JsonWorker()
+      case 'css':
+      case 'scss':
+      case 'less':
+        return new CssWorker()
+      case 'html':
+      case 'handlebars':
+      case 'razor':
+        return new HtmlWorker()
+      case 'typescript':
+      case 'javascript':
+        return new TsWorker()
+      default:
+        return new EditorWorker()
+    }
+  }
+
+  self.MonacoEnvironment = defu(self.MonacoEnvironment, { getWorker })
+
+  return await import('monaco-editor')
+}
+
+export function useMonaco () {
   if (import.meta.server) {
-    return Promise.reject(new Error('monaco-editor cannot be loaded on server'));
+    return Promise.reject(new Error('monaco-editor cannot be loaded on server'))
   }
-
   if (!monacoPromise) {
-    monacoPromise = (async () => {
-      if (!self.MonacoEnvironment) self.MonacoEnvironment = {};
-      if (!self.MonacoEnvironment.getWorker) {
-        self.MonacoEnvironment.getWorker = (_moduleId: string, label: string) => {
-          const getWorkerModuleURL = (moduleUrl: string) => new URL(
-            import.meta.dev ?
-              `/node_modules/monaco-editor/esm/vs/${moduleUrl}.js?worker` :
-              `${useNuxtApp().$config.app.baseURL}/_nuxt/nuxt-monaco-editor/vs/${moduleUrl}.js`.replace(/\/\//g, '/'),
-              import.meta.url);
-
-          const workerMap: Record<string, string> = {
-            json: 'language/json/json.worker',
-            css: 'language/css/css.worker',
-            html: 'language/html/html.worker',
-            typescript: 'language/typescript/ts.worker',
-            javascript: 'language/typescript/ts.worker',
-          };
-
-          const workerUrl = workerMap[label] || 'editor/editor.worker';
-          return new Worker(getWorkerModuleURL(workerUrl), { type: 'module' });
-        }
-      }
-      const monaco = await import('monaco-editor')
-      return monaco;
-    })();
+    monacoPromise = loadMonaco()
   }
-  return monacoPromise;
+  return monacoPromise
 }

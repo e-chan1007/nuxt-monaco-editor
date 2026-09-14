@@ -4,5 +4,19 @@
     "types": [
       "vite/client"
     ]
-  }
+  },
+  "include": [
+    "./src/**/*",
+    "./test/**/*",
+    "./playground/.nuxt/nuxt.d.ts",
+    "./playground/.nuxt/nuxt.node.d.ts",
+    "./playground/**/*"
+  ],
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "./docs",
+    "./playground/.nuxt/dist",
+    "./playground/.output"
+  ]
 }

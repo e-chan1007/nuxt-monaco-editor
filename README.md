@@ -15,6 +15,11 @@ npx nuxi@latest module add nuxt-monaco-editor
 
 Don't forget to install `monaco-editor`.
 
+## Version requirements
+
+- `nuxt-monaco-editor` v1.5.0 or later requires `monaco-editor` v0.56.0 or later.
+- If you use `monaco-editor` v0.55.x or earlier, use `nuxt-monaco-editor` v1.4.2.
+
 ## Setup
 
 1. Add this module to the Nuxt config
@@ -54,7 +59,6 @@ const value = ref("");
 
 ## Development
 
-- Run `git submodule update --init --recursive`.
 - Run `pnpm dev:prepare` to generate type stubs.
 - Use `pnpm dev` to start [playground](./playground) in development mode.
 - Run `pnpm exec playwright-core install --with-deps` to install dependencies for testing.

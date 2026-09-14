@@ -29,24 +29,22 @@
   ],
   "scripts": {
     "postpack": "pinst --enable",
-    "build": "nuxt-module-build build && pnpm loc:build",
+    "build": "nuxt-module-build build",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.cts,.mts,.vue . && remark . -q",
     "test": "nuxt test",
-    "prepack": "pinst --disable && nuxt-module-build build && pnpm loc:build",
+    "prepack": "pinst --disable && nuxt-module-build build",
     "release": "standard-version",
     "dev": "nuxt dev playground",
     "dev:build": "nuxt build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt prepare playground && pnpm loc:build",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt prepare playground",
     "docs:dev": "pnpm --filter nuxt-monaco-editor-docs dev",
     "docs:generate": "pnpm --filter nuxt-monaco-editor-docs generate",
     "docs:prepare": "pnpm --filter nuxt-monaco-editor-docs prepare",
-    "docs:preview": "pnpm --filter nuxt-monaco-editor-docs preview",
-    "loc:build": "jiti scripts/build-loc.ts"
+    "docs:preview": "pnpm --filter nuxt-monaco-editor-docs preview"
   },
   "dependencies": {
     "@nuxt/kit": "^4.5.0",
-    "defu": "^6.1.7",
-    "vite-plugin-static-copy": "^4.1.1"
+    "defu": "^6.1.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
@@ -70,7 +68,7 @@
     "vue-tsc": "^3.3.7"
   },
   "peerDependencies": {
-    "monaco-editor": "*"
+    "monaco-editor": ">=0.56.0"
   },
   "remarkConfig": {
     "plugins": [
