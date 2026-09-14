@@ -43,29 +43,29 @@
     "docs:preview": "pnpm --filter nuxt-monaco-editor-docs preview"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.5.0",
+    "@nuxt/kit": "^4.5.2",
     "defu": "^6.1.7"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.1",
-    "@commitlint/config-conventional": "^21.2.0",
-    "@nuxt/eslint-config": "^1.16.0",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@nuxt/eslint-config": "^1.17.0",
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/test-utils": "4.0.3",
-    "eslint": "^10.7.0",
+    "eslint": "^10.10.0",
     "jiti": "^2.7.0",
-    "lefthook": "^2.1.10",
+    "lefthook": "^2.1.12",
     "monaco-editor": "^0.56.0",
-    "nuxt": "^4.5.0",
+    "nuxt": "^4.5.2",
     "pinst": "^3.0.0",
-    "playwright-core": "^1.61.1",
+    "playwright-core": "^1.63.0",
     "remark-cli": "^12.0.1",
     "remark-lint": "^10.0.1",
     "remark-preset-lint-recommended": "^7.0.1",
     "standard-version": "^9.5.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10",
-    "vue-tsc": "^3.3.7"
+    "vitest": "^4.1.11",
+    "vue-tsc": "^3.3.11"
   },
   "peerDependencies": {
     "monaco-editor": ">=0.56.0"
