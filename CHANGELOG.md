@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.2...v1.5.0) (2026-09-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* resolve monaco workers with Vite and use monaco's native NLS
+
+### Features
+
+* resolve monaco workers with Vite and use monaco's native NLS ([b219b67](https://github.com/e-chan1007/nuxt-monaco-editor/commit/b219b67b226835d4c3c7a762f3fe04912df00359))
+
 ### [1.4.2](https://github.com/e-chan1007/nuxt-monaco-editor/compare/v1.4.1...v1.4.2) (2026-09-13)
 
 
